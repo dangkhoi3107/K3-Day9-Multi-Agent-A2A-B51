@@ -6,6 +6,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+import pandas as pd
+
 from src.data_access import DataStore
 from src.evidence import evidence_item, evidence_order, evidence_seller
 
@@ -41,18 +43,16 @@ def investigate(order_id: str) -> OrderSellerFacts:
 
     late_seller_ids: list[str] = []
 
-    # TODO (Vai tro 1): voi moi item trong `items`, so sanh order["order_delivered_carrier_date"]
-    # (mot gia tri DUY NHAT cho ca order) voi item["shipping_limit_date"] (rieng cho tung item).
-    # Neu carrier nhan hang SAU shipping_limit_date cua item do -> seller_id cua item do bi coi
-    # la ban giao muon (README muc 4). Luon kiem pd.notna(...) TRUOC khi so sanh - order chua
-    # giao / bi canceled se co order_delivered_carrier_date rong (NaT); NaT > x va NaT <= x deu
-    # tra False trong pandas, de gay ket luan sai am tham neu khong kiem truoc.
-    #
-    # carrier_date = order["order_delivered_carrier_date"]
-    # if pd.notna(carrier_date):
-    #     for it in items:
-    #         if pd.notna(it["shipping_limit_date"]) and carrier_date > it["shipping_limit_date"]:
-    #             late_seller_ids.append(it["seller_id"])
+    # README muc 4: seller bi coi la ban giao muon neu order_delivered_carrier_date (1 gia tri
+    # DUY NHAT cho ca don) SAU shipping_limit_date CUA TUNG ITEM. pd.notna(...) bat buoc truoc
+    # khi so sanh - don chua giao / bi canceled co carrier_date rong (NaT), va NaT > x / NaT <= x
+    # deu tra False trong pandas nen neu khong kiem truoc se am tham "khong ai tre" du that ra
+    # la "chua biet".
+    carrier_date = order["order_delivered_carrier_date"]
+    if pd.notna(carrier_date):
+        for it in items:
+            if pd.notna(it["shipping_limit_date"]) and carrier_date > it["shipping_limit_date"]:
+                late_seller_ids.append(it["seller_id"])
 
     evidence_ids = [evidence_order(order_id)]
     for it in items:

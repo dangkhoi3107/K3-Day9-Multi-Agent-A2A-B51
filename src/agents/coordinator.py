@@ -23,6 +23,12 @@ from src.schemas import (
 )
 from src.tracing import log_step
 
+# Vai tro 5 - quyet dinh xu ly verify_fail (xem architecture.md muc 6): khi Verifier bao
+# fail (evidence/so tien khong nhat quan) nhung KHONG phai loi schema, van ghi output (dam bao
+# du 50 file - hard-gate), nhung ha confidence xuong nguong nay de danh dau "can review tay".
+# Khong tu y sua lai quyet dinh cua Policy Agent - chi giam do tin cay va log.
+VERIFY_FAIL_CONFIDENCE = 0.1
+
 
 def run_case(input_path: Path) -> Path:
     case_id = input_path.stem
@@ -66,10 +72,12 @@ def _process(case_id: str, order_id: str) -> CaseOutput:
             ResponsibleParty(party_type=decision.responsible_party_type, party_id=decision.responsible_party_id)
         )
 
-    # TODO (Vai tro 5, xac nhan voi Vai tro 1/4): seller_ids trong affected_entities dang mac
-    # dinh = cac seller "vi pham" (os_facts.late_seller_ids). README chi cho 1 vi du (rule
-    # late_delivery_seller) nen chua ro voi cac rule khac co can liet ke TAT CA seller cua don
-    # hang khong - ban nhom lai neu can doi.
+    # DA CHOT (Vai tro 5, xac nhan voi Vai tro 1/4 - xem architecture.md muc 6): seller_ids trong
+    # affected_entities = cac seller "vi pham" (os_facts.late_seller_ids), KHONG liet ke tat ca
+    # seller cua don. Ly do: affected_entities la cac ben BI QUY TRACH NHIEM trong assessment,
+    # khong phai danh sach lien quan chung chung. Chi rule 3 (late_delivery_seller) co seller
+    # trach nhiem -> field nay chi non-empty o rule 3; cac rule khac late_seller_ids rong -> [] la
+    # dung y (trach nhiem thuoc platform/logistics/khong ai). Giu nhat quan voi responsible_party.
     output = CaseOutput(
         case_id=case_id,
         assessment=Assessment(
@@ -105,9 +113,23 @@ def _process(case_id: str, order_id: str) -> CaseOutput:
     result = verifier_agent.verify(output)
     if not result.ok:
         log_step(case_id, "verifier_agent", "verify_fail", {"errors": result.errors})
-        # TODO (Vai tro 5): hien tai van ghi output ngay ca khi verify fail, chi log loi de
-        # nhom soat lai bang tay - QUYET DINH XEM co nen thu tinh lai / ha confidence tu dong
-        # khi verify fail, thay vi ghi nguyen nhu Policy Agent tra ve.
+        # DA CHOT (Vai tro 5): verify fail (khong phai loi schema) -> KHONG sua so lieu cua
+        # Policy Agent, nhung ha confidence xuong VERIFY_FAIL_CONFIDENCE de danh dau case can
+        # review tay. Van ghi file (dam bao du 50 - hard-gate) thay vi bo trong.
+        if output.assessment.confidence > VERIFY_FAIL_CONFIDENCE:
+            output = output.model_copy(
+                update={
+                    "assessment": output.assessment.model_copy(
+                        update={"confidence": VERIFY_FAIL_CONFIDENCE}
+                    )
+                }
+            )
+        log_step(
+            case_id,
+            "coordinator",
+            "verify_fail_flagged",
+            {"confidence": output.assessment.confidence},
+        )
     else:
         log_step(case_id, "verifier_agent", "verify_pass", {})
 
