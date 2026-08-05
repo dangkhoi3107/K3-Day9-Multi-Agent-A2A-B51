@@ -11,16 +11,13 @@
 
 ## Trạng thái hiện tại (đã build sẵn, đọc trước khi bắt đầu)
 
-**Đã merge vào `main`** (octopus merge `son` + `TranTrung` + `Khoi`, sạch, không conflict — verify bằng `git merge-tree` trước khi merge và `pytest` sau khi merge; role 3 push thẳng lên `main` sau đó, đã pull + review + verify tay fixture khớp `orders.csv`): `pytest` → **23 passed, 1 xfail có chủ đích**. `python scripts/run_pipeline.py EC_001` / `EC_022` đã chạy thành công trên case thật.
+**CẢ 4 AGENT NGHIỆP VỤ ĐÃ XONG VÀ ĐÃ MERGE VÀO `main`.** `pytest` → **30 passed, 0 fail, 0 xfail**. Full batch `python scripts/run_pipeline.py` đã chạy thật trên **50/50 case** (nhánh `dangduc`), `python scripts/validate_output.py` đã sạch. Đã verify độc lập: tự tính lại đáp án đúng cho cả 50 case từ CSV gốc (code viết riêng, không dùng lại code trong repo) — khớp 100% với output thật, không case nào rơi vào fallback.
 
-- **Hạ tầng (xong, không cần đụng vào trừ khi có bug):** `src/config.py`, `src/schemas.py`, `src/evidence.py`, `src/data_access.py`, `src/tracing.py`, `src/llm_client.py`, `src/agents/verifier_agent.py`, `scripts/run_pipeline.py`, `scripts/validate_output.py`, `scripts/package_submission.py`.
-- **`src/agents/coordinator.py`:** xong, kể cả 2 quyết định mở trước đó (`seller_ids` trong `affected_entities`, xử lý `verify_fail`) — Vai trò 5 (son) đã chốt, xem `architecture.md` mục 6.
-- **`src/agents/order_seller_agent.py`:** xong — Vai trò 1 (Khoi) đã implement `late_seller_ids` + test.
-- **`src/agents/payment_agent.py`:** logic xong từ đầu, test đã đủ — Vai trò 2 (TranTrung) đã verify + đề xuất dung sai rule 6 (đang chờ Vai trò 4 xác nhận).
-- **`src/agents/delivery_agent.py`:** xong — Vai trò 3 đã implement `late_to_customer` + test, đã verify tay fixture khớp dữ liệu gốc.
-- **`logging/metadata.json`:** đã điền (Vai trò 5).
+- **Hạ tầng + cả 5 agent (xong hết):** `src/config.py`, `src/schemas.py`, `src/evidence.py`, `src/data_access.py`, `src/tracing.py`, `src/llm_client.py`, `src/agents/coordinator.py`, `src/agents/order_seller_agent.py` (Khoi), `src/agents/payment_agent.py` (TranTrung), `src/agents/delivery_agent.py` (role 3), `src/agents/policy_agent.py` (dangduc), `src/agents/verifier_agent.py`, `scripts/*`.
+- **`logging/metadata.json`:** đã điền.
+- **Dung sai rule 6:** đã chốt `0.10 BRL` (Role 2 + Role 4), ghi trong `architecture.md` mục 6.
 
-**Còn TODO thật sự — chỉ còn đúng 1 vai trò, không còn ai chặn:** `src/agents/policy_agent.py` (Vai trò 4) — cả 6/6 rule đều làm được ngay, xem "Thứ tự ưu tiên" bên dưới. Mỗi hàm đã có comment `# TODO (Vai trò 4)` kèm công thức trích từ README ngay tại chỗ.
+**Còn lại chỉ là việc của Leader (đóng gói, nộp) + báo cáo cá nhân từng người — không còn TODO code nào.**
 
 ---
 
@@ -34,41 +31,27 @@ Hạ tầng dùng chung (`schemas.py`, `data_access.py`, `evidence.py`, `tracing
 
 | # | Task | Ai | Trạng thái |
 | - | --- | -- | --- |
-| 1 | Implement + test rule 1 (`canceled_order_paid`) và rule 2 (`unavailable_order_paid`) trong `policy_agent.py` | Vai trò 4 | ⬜ Chưa làm — không chờ ai, làm được ngay |
-| 2 | Implement + test rule 5 (`valid_split_payment`) | Vai trò 4 | ⬜ Chưa làm — không chờ ai, làm được ngay |
-| 3 | Implement `late_seller_ids` trong `order_seller_agent.py` | Vai trò 1 | ✅ Xong (đã merge vào `main`) |
-| 4 | Implement `late_to_customer` trong `delivery_agent.py` | Vai trò 3 | ✅ Xong (đã merge vào `main`) |
-| 5 | Chốt dung sai rule 6 (giữ `0.10 BRL` hay đổi khác) | Vai trò 2 + Vai trò 4 | 🟡 Vai trò 2 đã đề xuất `0.10 BRL` (xem `architecture.md` mục 6) — chờ Vai trò 4 xác nhận |
+| 1 | Implement + test rule 1 (`canceled_order_paid`) và rule 2 (`unavailable_order_paid`) trong `policy_agent.py` | Vai trò 4 | ✅ Xong |
+| 2 | Implement + test rule 5 (`valid_split_payment`) | Vai trò 4 | ✅ Xong |
+| 3 | Implement `late_seller_ids` trong `order_seller_agent.py` | Vai trò 1 | ✅ Xong |
+| 4 | Implement `late_to_customer` trong `delivery_agent.py` | Vai trò 3 | ✅ Xong |
+| 5 | Chốt dung sai rule 6 (giữ `0.10 BRL` hay đổi khác) | Vai trò 2 + Vai trò 4 | ✅ Xong — giữ `0.10 BRL` |
 
-**Vai trò 4 đừng ngồi chờ Vai trò 1/3 — bắt tay ngay với task #1 và #2, đó là 3/6 rule làm được luôn.**
-
-### Tier 1 — hết chặn, làm được ngay
+### Tier 1 & 2 — hoàn tất
 
 | # | Task | Ai | Trạng thái |
 | - | --- | -- | --- |
-| 6 | Implement + test rule 6 (`unsupported_late_claim`) | Vai trò 4 | ✅ Hết chặn — task #4 (Vai trò 3) đã xong |
+| 6 | Implement + test rule 6 (`unsupported_late_claim`) | Vai trò 4 | ✅ Xong |
+| 7 | Implement + test rule 3 (`late_delivery_seller`) và rule 4 (`late_delivery_logistics`) | Vai trò 4 | ✅ Xong |
 
-### Tier 2 — hết chặn, làm được ngay
+### Tier 3 & 4 — đã chạy thật, đã verify
 
 | # | Task | Ai | Trạng thái |
 | - | --- | -- | --- |
-| 7 | Implement + test rule 3 (`late_delivery_seller`) và rule 4 (`late_delivery_logistics`) | Vai trò 4 | ✅ Hết chặn — cả task #3 (Vai trò 1) và #4 (Vai trò 3) đã xong |
-
-**Vai trò 4 giờ không còn bị chặn bởi ai nữa — cả 6/6 rule đều làm được ngay bây giờ.**
-
-### Tier 3 — chỉ chạy có ý nghĩa khi Vai trò 4 xong đủ 6 rule
-
-| # | Task | Ai | Chờ gì |
-| - | --- | -- | --- |
-| 8 | Chạy full 50 case thật: `python scripts/run_pipeline.py` | Leader | Chờ task #1, #2, #6, #7 (đủ 6/6 rule — chạy sớm hơn chỉ toàn ra fallback confidence thấp như `EC_001` lúc nãy) |
-| 9 | `python scripts/validate_output.py`, quay lại sửa đúng người phụ trách tới khi sạch | Leader | Chờ task #8 |
-
-### Tier 4 — cuối cùng, không còn phụ thuộc kỹ thuật
-
-| # | Task | Ai | Chờ gì |
-| - | --- | -- | --- |
-| 10 | Điền `logging/metadata.json`, chạy `package_submission.py`, nộp form | Leader | Chờ task #9 sạch |
-| 11 | Hoàn thiện báo cáo cá nhân | Cả 5 người | Không chặn ai khác — làm song song bất cứ lúc nào rảnh tay, không cần chờ tier nào |
+| 8 | Chạy full 50 case thật: `python scripts/run_pipeline.py` | Leader/dangduc | ✅ Xong — 50/50 file, đã verify độc lập khớp 100% |
+| 9 | `python scripts/validate_output.py` | Leader | ✅ Xong — sạch, evidence đều tra cứu được thật |
+| 10 | Điền `logging/metadata.json`, chạy `package_submission.py`, nộp form | Leader | ⬜ `metadata.json` đã điền — còn `package_submission.py` + nộp form |
+| 11 | Hoàn thiện báo cáo cá nhân | Cả 5 người | ⬜ Chưa xác nhận — mỗi người tự kiểm file `individual_...md` của mình |
 
 ---
 
@@ -80,14 +63,14 @@ Hạ tầng dùng chung (`schemas.py`, `data_access.py`, `evidence.py`, `tracing
 - [x] Cập nhật `tests/test_order_seller_agent.py` với order_id thật (late-seller, on-time, order không có item row — cả 3 đều lấy từ chính 50 case thật, xem `scripts/find_test_fixtures.py`).
 - [x] Viết `test_seller_late_when_carrier_after_shipping_limit()` + bonus `test_seller_on_time_is_not_flagged_late()`.
 - [x] `python -m pytest tests/test_order_seller_agent.py -v` — 5/5 pass. Đã verify thêm end-to-end thật trên `EC_022.json` (case chứa order late-seller) qua `run_pipeline.py`.
-- [ ] **Còn lại — không phải chờ ai, chỉ cần bạn báo:** nhắn Vai trò 4 là `late_seller_ids` đã chạy đúng, có thể bắt đầu code rule 3/4 phần seller (rule 3/4 vẫn còn chờ thêm Vai trò 3 xong `late_to_customer` mới đủ điều kiện, xem Tier 2 ở trên).
+- [x] Đã báo/đã dùng: Vai trò 4 (dangduc) đã dùng `late_seller_ids` đúng trong rule 3/4, verify qua độc lập khớp 100%.
 
 ## Vai trò 2 — Payment Agent
 
 **File:** `src/agents/payment_agent.py` · **Test:** `tests/test_payment_agent.py`
 
 - [x] Công thức đối soát đã implement sẵn — đọc lại để xác nhận đúng ý, không cần viết mới.
-- [ ] Chốt cùng Vai trò 4: rule 6 (`unsupported_late_claim`) có dùng lại dung sai `0.10 BRL` không (biến `UNSUPPORTED_CLAIM_TOLERANCE_BRL` trong `src/config.py`) — ghi quyết định vào `architecture.md` mục 6. **Role 2 note:** đã ghi đề xuất trong `architecture.md`, chờ Role 4 xác nhận.
+- [x] Chốt cùng Vai trò 4: dùng lại dung sai `0.10 BRL` cho rule 6 — đã xác nhận, ghi trong `architecture.md` mục 6.
 - [x] Mở `tests/test_payment_agent.py`, viết 2 test còn để `# TODO` cuối file (2 payment khớp = valid split; 2 payment lệch = không hợp lệ) — tìm order_id thật bằng cách lọc `data/olist_order_payments_dataset.csv` theo số dòng/`order_id`.
 - [x] Chạy `python -m pytest tests/test_payment_agent.py -v`.
 - [x] Verify trên vài case thật: so `payment_total_brl` agent tính ra với tổng cột `payment_value` lọc tay trong CSV.
@@ -100,8 +83,8 @@ Hạ tầng dùng chung (`schemas.py`, `data_access.py`, `evidence.py`, `tracing
 - [x] Cập nhật `tests/test_delivery_agent.py` với order_id thật (không dùng `REPLACE_ME` nữa) — đã đối chiếu tay cả 3 fixture (`EC_001` trễ hạn, `EC_002` đúng hạn, `EC_003` chưa giao) với `orders.csv` gốc, khớp 100%.
 - [x] `test_delivered_on_time()` và `test_delivered_late()` đã viết, cả 2 pass.
 - [x] `python -m pytest tests/test_delivery_agent.py -v` — 5/5 pass. Full suite sau khi merge: 23 passed, 1 xfail.
-- [ ] **Còn lại — không phải chờ ai, chỉ cần báo:** báo Vai trò 4 là `late_to_customer` đã chạy đúng và merge vào `main` — rule 3/4/6 giờ không còn bị chặn bởi Vai trò 1 hay 3 nữa.
-- [ ] Khi có kết quả 50 case thật: rà xem `order_status` có giá trị lạ nào ngoài `delivered/canceled/unavailable` không, báo sớm cho Vai trò 4 (chưa thấy làm mục này).
+- [x] Đã báo/đã dùng: Vai trò 4 (dangduc) đã dùng `late_to_customer` đúng trong rule 3/4/6.
+- [x] Đã gián tiếp xác nhận: cả 50/50 case thật khớp đúng 1 trong 6 rule khi verify độc lập — không case nào bị `order_status` lạ làm rơi vào fallback ngoài ý muốn.
 
 ## Vai trò 4 — Policy Agent (rule engine)
 
@@ -120,14 +103,14 @@ Phần việc nặng nhất — phụ thuộc field từ Vai trò 1 (`late_selle
 
 **File:** `src/agents/coordinator.py`, `scripts/*`, `logging/metadata.json`
 
-- [x] Review + merge nhánh của các người còn lại vào `main` (đã merge `son` + `TranTrung` + `Khoi`, octopus merge sạch, `pytest` 21 passed/1 xfail sau merge) — **còn nhánh Vai trò 3, 4 sẽ merge tiếp khi họ xong.**
+- [x] Review + merge nhánh của **cả 4 người** vào `main` (`son`, `TranTrung`, `Khoi`, `dangduc`) — tất cả đều review kỹ + verify trước khi merge, không nhánh nào bị conflict. `pytest` cuối cùng: **30 passed, 0 fail, 0 xfail.**
 - [x] Trong `coordinator.py::_process`, TODO về `seller_ids` trong `affected_entities` — đã chốt = `late_seller_ids` (seller vi phạm), ghi rõ lý do trong `architecture.md` mục 6.
 - [x] Quyết định TODO thứ hai trong `_process`: `verify_fail` → hạ `confidence` xuống `0.1` (không tự sửa số liệu Policy Agent), vẫn ghi file. Đã implement (`VERIFY_FAIL_CONFIDENCE`).
-- [ ] Sau khi Vai trò 3 + 4 xong: chạy `python scripts/run_pipeline.py` (full 50 case) → `python scripts/validate_output.py` → sửa lỗi tới khi sạch.
+- [x] Chạy `python scripts/run_pipeline.py` (full 50 case) → `python scripts/validate_output.py` — **cả 2 đã sạch** (dangduc chạy, đã verify độc lập lại toàn bộ).
 - [x] Điền `logging/metadata.json`: tên model thật đã dùng, param size, framework, runtime, `policy_version`.
-- [ ] Chạy `python scripts/package_submission.py`, kiểm tra `submission.zip` chỉ chứa `output/` (đúng README, không kèm source/.env).
+- [ ] Chạy `python scripts/package_submission.py`, kiểm tra `submission.zip` chỉ chứa `output/` (đúng README, không kèm source/.env). **— việc kỹ thuật cuối cùng còn lại.**
 - [ ] Review 5 file `individual_[5 số cuối MSSV]_[Họ Tên].md` — mỗi người 1 file riêng, không dùng chung.
-- [ ] Rà lại `architecture.md` — bản nháp đã có, cập nhật phần nào lệch so với code thật (đặc biệt mục 6 "Quyết định kỹ thuật cần chốt").
+- [x] Rà lại `architecture.md` mục 6 — đã cập nhật khớp code thật (dung sai rule 6, làm tròn tiền, xác nhận 50/50 case không rơi fallback).
 
 ### Lớp việc thêm của Leader — quản lý người/thời gian, không phải code
 
@@ -160,7 +143,9 @@ thứ 6 đứng ngoài không code — 5 người là đủ, leader vẫn code p
 
 ## Trước khi nộp — mọi người cùng kiểm
 
-- [ ] `python -m pytest` — tất cả pass (không còn `xfail`).
-- [ ] `python scripts/run_pipeline.py` chạy full 50 case, không case nào rơi fallback ngoài ý muốn.
-- [ ] `python scripts/validate_output.py` — sạch, không lỗi.
-- [ ] `git status` — không có `.env`, không có `archive/` trong danh sách staged.
+- [x] `python -m pytest` — 30 passed, không còn `xfail`.
+- [x] `python scripts/run_pipeline.py` chạy full 50 case — không case nào rơi fallback ngoài ý muốn (đã verify độc lập).
+- [x] `python scripts/validate_output.py` — sạch, không lỗi.
+- [ ] `git status` — không có `.env`, không có `archive/` trong danh sách staged (soát lại lần cuối trước khi push commit nộp bài).
+- [ ] `python scripts/package_submission.py` đã chạy, `submission.zip` chỉ chứa `output/`.
+- [ ] Đủ 5 báo cáo cá nhân, không ai bỏ trống.
