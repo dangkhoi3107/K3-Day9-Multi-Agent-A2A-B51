@@ -108,7 +108,7 @@ Evidence ID hợp lệ — đúng 5 dạng: `order:<order_id>`, `item:<order_id>
 
 ## 6. Quyết định kỹ thuật cần chốt (điền khi nhóm quyết định)
 
-- **Dung sai rule 6 (`unsupported_late_claim`):** README chỉ nêu rõ sai số 0.10 BRL ở rule 5. Quyết định: **[ ]** có dùng lại 0.10 BRL cho "payment khớp" ở rule 6 không — lý do: \_\_\_.
+- **Dung sai rule 6 (`unsupported_late_claim`):** README chỉ nêu rõ sai số 0.10 BRL ở rule 5. Role 2 đề xuất dùng lại `0.10 BRL` qua `UNSUPPORTED_CLAIM_TOLERANCE_BRL` để giữ cùng định nghĩa "payment khớp" giữa Payment Agent và Policy Agent. **Pending Role 4 confirmation** trước khi coi đây là quyết định cuối.
 - **Làm tròn tiền dùng chung:** **[ ]** `Decimal` + `ROUND_HALF_UP` hay cách khác — áp dụng nhất quán giữa Payment Agent và Policy Agent.
 - **Case không khớp rule nào (nếu phát sinh khi chạy 50 case thật):** **[ ]** fallback là gì, confidence bao nhiêu, có cần review tay không.
 - **Xử lý ngày rỗng (NaT):** Delivery/Policy Agent luôn kiểm `notna()` trước khi so sánh `order_delivered_customer_date`/`order_delivered_carrier_date` — không suy ra "đúng hạn" từ giá trị rỗng.

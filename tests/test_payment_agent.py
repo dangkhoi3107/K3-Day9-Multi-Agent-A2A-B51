@@ -27,6 +27,25 @@ def test_known_order_payment_total_matches_sum_of_rows():
     assert pay_facts.is_split == (len(pay_facts.payments) >= 2)
 
 
-# TODO (Vai tro 2):
-# def test_two_reconciled_payments_is_valid_split(): order_id = "REPLACE_ME"; assert is_split and is_reconciled
-# def test_two_mismatched_payments_is_not_reconciled(): order_id = "REPLACE_ME"; assert not is_reconciled
+def test_two_reconciled_payments_is_valid_split():
+    order_id = "0016dfedd97fc2950e388d2971d718c7"
+    os_facts = investigate_order_seller(order_id)
+    pay_facts = investigate(order_id, os_facts.item_total_brl, os_facts.freight_total_brl)
+
+    assert len(pay_facts.payments) == 2
+    assert pay_facts.is_split is True
+    assert pay_facts.payment_total_brl == 70.55
+    assert round(os_facts.item_total_brl + os_facts.freight_total_brl, 2) == 70.55
+    assert pay_facts.is_reconciled is True
+
+
+def test_two_mismatched_payments_is_not_reconciled():
+    order_id = "b38b3526b8b8fdc807e8a0a42ab78573"
+    os_facts = investigate_order_seller(order_id)
+    pay_facts = investigate(order_id, os_facts.item_total_brl, os_facts.freight_total_brl)
+
+    assert len(pay_facts.payments) == 2
+    assert pay_facts.is_split is True
+    assert pay_facts.payment_total_brl == 30.19
+    assert round(os_facts.item_total_brl + os_facts.freight_total_brl, 2) == 30.06
+    assert pay_facts.is_reconciled is False
