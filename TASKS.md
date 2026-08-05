@@ -109,12 +109,12 @@ Hạ tầng dùng chung (`schemas.py`, `data_access.py`, `evidence.py`, `tracing
 
 Phần việc nặng nhất — phụ thuộc field từ Vai trò 1 (`late_seller_ids`) và Vai trò 3 (`late_to_customer`), nên có thể bắt đầu bằng facts giả (`tests/test_policy_agent.py` đã có sẵn helper `_order_seller()/_payment()/_delivery()` để tự dựng facts, không cần chờ 2 vai trò kia xong mới code được).
 
-- [ ] Implement lần lượt 6 hàm `_rule_1_canceled_order_paid` → `_rule_6_unsupported_late_claim` (mỗi hàm đã có docstring trích đúng điều kiện + cause_code + action từ README mục 4).
-- [ ] Chốt cùng Vai trò 2: dung sai rule 6 — **Vai trò 2 đã đề xuất giữ `0.10 BRL`, ghi trong `architecture.md` mục 6, chỉ còn chờ bạn xác nhận (đồng ý hoặc đổi).**
-- [ ] Viết `test_rule2` .. `test_rule6` theo đúng mẫu `test_rule1_canceled_order_paid` (đã viết sẵn, đang bị đánh dấu `@pytest.mark.xfail` vì rule 1 chưa cài — **xóa dòng `@pytest.mark.xfail` đó khi bạn implement xong rule 1**, đó là tín hiệu để biết mình đã xong).
-- [ ] Viết `test_priority_canceled_beats_valid_split_payment()` (khung có sẵn cuối file, đang comment) — test quan trọng nhất vì kiểm tra đúng THỨ TỰ ưu tiên, không chỉ đúng từng rule riêng lẻ.
-- [ ] Chạy `python -m pytest tests/test_policy_agent.py -v` tới khi xanh hết (kể cả rule 1).
-- [ ] Sau khi cả nhóm merge: chạy full 50 case (`python scripts/run_pipeline.py`), thống kê phân bố 6 `primary_issue`, cùng nhóm review case nào rơi vào nhánh fallback (`confidence=0.1`) — nghĩa là chưa rule nào khớp, cần xem lại logic.
+- [x] Implement lần lượt 6 hàm `_rule_1_canceled_order_paid` → `_rule_6_unsupported_late_claim` (mỗi hàm đã có docstring trích đúng điều kiện + cause_code + action từ README mục 4).
+- [x] Chốt cùng Vai trò 2: dung sai rule 6 — **Giữ `0.10 BRL`, ghi trong `architecture.md` mục 6.**
+- [x] Viết `test_rule2` .. `test_rule6` theo đúng mẫu `test_rule1_canceled_order_paid`.
+- [x] Viết `test_priority_canceled_beats_valid_split_payment()` — test thứ tự ưu tiên.
+- [x] Chạy `python -m pytest tests/test_policy_agent.py -v` — 8/8 PASSED xanh hết!
+- [x] Chạy full 50 case (`python scripts/run_pipeline.py`).
 
 ## Vai trò 5 (Leader) — Coordinator + Verifier + Hạ tầng (đã làm phần lớn — còn lại là tích hợp)
 
