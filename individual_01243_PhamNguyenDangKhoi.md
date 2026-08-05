@@ -5,7 +5,7 @@
 | Thông tin       | Nội dung                                                              |
 | --------------- | ---------------------------------------------------------------------- |
 | Họ và tên       | Phạm Nguyễn Đăng Khôi                                                   |
-| MSSV            | (…)01243                                                               |
+| MSSV            | 2A202601243                                                               |
 | Khóa/Lớp        | K3 / B51                                                               |
 | Vai trò chính   | Vai trò 1 — Order & Seller Agent, kiêm Leader (hạ tầng, tích hợp, kiểm chứng) |
 | Ngày hoàn thành | 2026-08-05                                                             |
