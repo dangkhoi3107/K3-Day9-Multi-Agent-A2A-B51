@@ -1,0 +1,29 @@
+{
+  "policy_version": "EC_POLICY_V1",
+  "model": {
+    "name": "llama-3.1-8b-instant",
+    "provider": "groq",
+    "parameter_size": "8B",
+    "context": "OpenAI-compatible API",
+    "usage": "Chi sinh ly do/tuong thuat ngan cho logging/trace.jsonl va ho tro Coordinator dieu phoi. Text LLM KHONG bao gio di thang vao evidence_ids, ID hay so tien trong output cuoi - moi field cham diem duoc tinh bang loi tat dinh (pandas + rule engine)."
+  },
+  "fallback_model": {
+    "name": "qwen2.5:7b-instruct",
+    "provider": "ollama",
+    "parameter_size": "7B",
+    "context": "Chay local khi mat mang / het quota Groq (API tuong thich OpenAI, chi doi base_url + model)."
+  },
+  "framework": "Custom multi-agent (Python) - Coordinator dieu phoi 5 agent (Order&Seller, Payment, Delivery, Policy EC_POLICY_V1, Verifier), giao tiep A2A qua handoff message + logging/trace.jsonl. Schema hop dong bang Pydantic v2; goi model qua openai SDK.",
+  "runtime": {
+    "language": "Python",
+    "version": "3.13",
+    "os": "macOS (darwin)",
+    "key_dependencies": [
+      "pandas>=2.0",
+      "pydantic>=2.0",
+      "python-dotenv>=1.0",
+      "openai>=1.0",
+      "pytest>=8.0"
+    ]
+  }
+}

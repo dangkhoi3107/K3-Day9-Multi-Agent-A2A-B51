@@ -12,7 +12,7 @@ Vì vậy hệ thống dùng **lõi tất định (deterministic) + agent LLM m�
 - **Model ≤10B tham số** (bắt buộc — README mục 9.1) → dùng trong từng agent để viết lý do/tường thuật cho `logging/trace.jsonl`, hỗ trợ Coordinator điều phối. Text do LLM sinh ra **không bao giờ** đi thẳng vào `evidence_ids`, ID, hay số tiền trong output cuối.
 - **Verifier Agent** đối chiếu mọi ID được nhắc tới với dữ liệu thật trước khi cho phép ghi file — chặn hallucination trước khi nó thành hard gate.
 
-Model đề xuất: `llama-3.1-8b-instant` qua Groq API (nhanh, free tier, SDK tương thích OpenAI) làm chính; fallback `qwen2.5:7b-instruct` chạy local qua Ollama khi mất mạng/hết quota. **[ ]** Điền tên model thật đã dùng vào đây và vào `logging/metadata.json` trước khi nộp.
+Model đã dùng: **`llama-3.1-8b-instant`** (8B, ≤10B — đạt yêu cầu README mục 9.1) qua Groq API (nhanh, free tier, SDK tương thích OpenAI) làm chính; fallback **`qwen2.5:7b-instruct`** (7B) chạy local qua Ollama khi mất mạng/hết quota. Khai báo trong source (`src/config.py` đọc từ `.env`) và ghi lại trong `logging/metadata.json` (đã điền — Vai trò 5).
 
 ## 2. Vai trò agent
 
@@ -112,6 +112,8 @@ Evidence ID hợp lệ — đúng 5 dạng: `order:<order_id>`, `item:<order_id>
 - **Làm tròn tiền dùng chung:** **[ ]** `Decimal` + `ROUND_HALF_UP` hay cách khác — áp dụng nhất quán giữa Payment Agent và Policy Agent.
 - **Case không khớp rule nào (nếu phát sinh khi chạy 50 case thật):** **[ ]** fallback là gì, confidence bao nhiêu, có cần review tay không.
 - **Xử lý ngày rỗng (NaT):** Delivery/Policy Agent luôn kiểm `notna()` trước khi so sánh `order_delivered_customer_date`/`order_delivered_carrier_date` — không suy ra "đúng hạn" từ giá trị rỗng.
+- **`seller_ids` trong `affected_entities` (Vai trò 5, chốt với 1/4):** = `late_seller_ids` (seller vi phạm), **không** liệt kê mọi seller của đơn — vì đây là các bên bị quy trách nhiệm, giữ nhất quán với `responsible_parties`. Chỉ rule 3 (`late_delivery_seller`) làm field này non-empty; các rule khác → `[]`.
+- **Verifier trả `verify_fail` (Vai trò 5):** lỗi **schema** → raise → ghi `_fallback_output` (confidence 0). Lỗi **evidence/số tiền không nhất quán** (không phải schema) → **không** sửa số liệu Policy Agent, nhưng **hạ `confidence` xuống `0.1`** (`VERIFY_FAIL_CONFIDENCE` trong `coordinator.py`) để đánh dấu case cần review tay, và vẫn ghi file (đảm bảo đủ 50 — hard-gate). Trace ghi thêm bước `verify_fail_flagged`.
 
 ## 7. Rủi ro hard-gate cần verifier chặn trước khi ghi file
 
