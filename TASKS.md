@@ -108,7 +108,7 @@ Phần việc nặng nhất — phụ thuộc field từ Vai trò 1 (`late_selle
 - [x] Quyết định TODO thứ hai trong `_process`: `verify_fail` → hạ `confidence` xuống `0.1` (không tự sửa số liệu Policy Agent), vẫn ghi file. Đã implement (`VERIFY_FAIL_CONFIDENCE`).
 - [x] Chạy `python scripts/run_pipeline.py` (full 50 case) → `python scripts/validate_output.py` — **cả 2 đã sạch** (dangduc chạy, đã verify độc lập lại toàn bộ).
 - [x] Điền `logging/metadata.json`: tên model thật đã dùng, param size, framework, runtime, `policy_version`.
-- [ ] Chạy `python scripts/package_submission.py`, kiểm tra `submission.zip` chỉ chứa `output/` (đúng README, không kèm source/.env). **— việc kỹ thuật cuối cùng còn lại.**
+- [x] Chạy `python scripts/package_submission.py` — `submission.zip` đã tạo, kiểm tra thật: đúng 50 entry, toàn bộ nằm trong `output/`, đúng tên `EC_001.json`–`EC_050.json`, không kèm source/.env.
 - [ ] Review 5 file `individual_[5 số cuối MSSV]_[Họ Tên].md` — mỗi người 1 file riêng, không dùng chung.
 - [x] Rà lại `architecture.md` mục 6 — đã cập nhật khớp code thật (dung sai rule 6, làm tròn tiền, xác nhận 50/50 case không rơi fallback).
 
@@ -147,5 +147,5 @@ thứ 6 đứng ngoài không code — 5 người là đủ, leader vẫn code p
 - [x] `python scripts/run_pipeline.py` chạy full 50 case — không case nào rơi fallback ngoài ý muốn (đã verify độc lập).
 - [x] `python scripts/validate_output.py` — sạch, không lỗi.
 - [ ] `git status` — không có `.env`, không có `archive/` trong danh sách staged (soát lại lần cuối trước khi push commit nộp bài).
-- [ ] `python scripts/package_submission.py` đã chạy, `submission.zip` chỉ chứa `output/`.
+- [x] `python scripts/package_submission.py` đã chạy, `submission.zip` chỉ chứa `output/` (50/50 file, đã kiểm tay).
 - [ ] Đủ 5 báo cáo cá nhân, không ai bỏ trống.
