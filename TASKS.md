@@ -11,15 +11,16 @@
 
 ## Trạng thái hiện tại (đã build sẵn, đọc trước khi bắt đầu)
 
-**Đã merge vào `main`** (octopus merge `son` + `TranTrung` + `Khoi`, sạch, không conflict — verify bằng `git merge-tree` trước khi merge và `pytest` sau khi merge): `pytest` → **21 passed, 1 xfail có chủ đích**. `python scripts/run_pipeline.py EC_001` / `EC_022` đã chạy thành công trên case thật.
+**Đã merge vào `main`** (octopus merge `son` + `TranTrung` + `Khoi`, sạch, không conflict — verify bằng `git merge-tree` trước khi merge và `pytest` sau khi merge; role 3 push thẳng lên `main` sau đó, đã pull + review + verify tay fixture khớp `orders.csv`): `pytest` → **23 passed, 1 xfail có chủ đích**. `python scripts/run_pipeline.py EC_001` / `EC_022` đã chạy thành công trên case thật.
 
 - **Hạ tầng (xong, không cần đụng vào trừ khi có bug):** `src/config.py`, `src/schemas.py`, `src/evidence.py`, `src/data_access.py`, `src/tracing.py`, `src/llm_client.py`, `src/agents/verifier_agent.py`, `scripts/run_pipeline.py`, `scripts/validate_output.py`, `scripts/package_submission.py`.
 - **`src/agents/coordinator.py`:** xong, kể cả 2 quyết định mở trước đó (`seller_ids` trong `affected_entities`, xử lý `verify_fail`) — Vai trò 5 (son) đã chốt, xem `architecture.md` mục 6.
 - **`src/agents/order_seller_agent.py`:** xong — Vai trò 1 (Khoi) đã implement `late_seller_ids` + test.
 - **`src/agents/payment_agent.py`:** logic xong từ đầu, test đã đủ — Vai trò 2 (TranTrung) đã verify + đề xuất dung sai rule 6 (đang chờ Vai trò 4 xác nhận).
+- **`src/agents/delivery_agent.py`:** xong — Vai trò 3 đã implement `late_to_customer` + test, đã verify tay fixture khớp dữ liệu gốc.
 - **`logging/metadata.json`:** đã điền (Vai trò 5).
 
-**Còn TODO thật sự — đúng phần việc của 2 vai trò dưới đây, chưa ai đụng vào:** `src/agents/delivery_agent.py` (Vai trò 3) và `src/agents/policy_agent.py` (Vai trò 4). Mỗi hàm cần sửa đã có comment `# TODO (Vai trò N)` kèm công thức trích từ README ngay tại chỗ, và có sẵn pseudo-code bị comment-out để tham khảo.
+**Còn TODO thật sự — chỉ còn đúng 1 vai trò, không còn ai chặn:** `src/agents/policy_agent.py` (Vai trò 4) — cả 6/6 rule đều làm được ngay, xem "Thứ tự ưu tiên" bên dưới. Mỗi hàm đã có comment `# TODO (Vai trò 4)` kèm công thức trích từ README ngay tại chỗ.
 
 ---
 
@@ -36,22 +37,24 @@ Hạ tầng dùng chung (`schemas.py`, `data_access.py`, `evidence.py`, `tracing
 | 1 | Implement + test rule 1 (`canceled_order_paid`) và rule 2 (`unavailable_order_paid`) trong `policy_agent.py` | Vai trò 4 | ⬜ Chưa làm — không chờ ai, làm được ngay |
 | 2 | Implement + test rule 5 (`valid_split_payment`) | Vai trò 4 | ⬜ Chưa làm — không chờ ai, làm được ngay |
 | 3 | Implement `late_seller_ids` trong `order_seller_agent.py` | Vai trò 1 | ✅ Xong (đã merge vào `main`) |
-| 4 | Implement `late_to_customer` trong `delivery_agent.py` | Vai trò 3 | ⬜ Chưa làm — không chờ ai, làm được ngay |
+| 4 | Implement `late_to_customer` trong `delivery_agent.py` | Vai trò 3 | ✅ Xong (đã merge vào `main`) |
 | 5 | Chốt dung sai rule 6 (giữ `0.10 BRL` hay đổi khác) | Vai trò 2 + Vai trò 4 | 🟡 Vai trò 2 đã đề xuất `0.10 BRL` (xem `architecture.md` mục 6) — chờ Vai trò 4 xác nhận |
 
 **Vai trò 4 đừng ngồi chờ Vai trò 1/3 — bắt tay ngay với task #1 và #2, đó là 3/6 rule làm được luôn.**
 
-### Tier 1 — chờ đúng 1 người xong
+### Tier 1 — hết chặn, làm được ngay
 
-| # | Task | Ai | Chờ gì |
+| # | Task | Ai | Trạng thái |
 | - | --- | -- | --- |
-| 6 | Implement + test rule 6 (`unsupported_late_claim`) | Vai trò 4 | Chờ task #4 (Vai trò 3 xong `late_to_customer`) |
+| 6 | Implement + test rule 6 (`unsupported_late_claim`) | Vai trò 4 | ✅ Hết chặn — task #4 (Vai trò 3) đã xong |
 
-### Tier 2 — chỉ còn chờ 1 người (task #3 đã xong)
+### Tier 2 — hết chặn, làm được ngay
 
-| # | Task | Ai | Chờ gì |
+| # | Task | Ai | Trạng thái |
 | - | --- | -- | --- |
-| 7 | Implement + test rule 3 (`late_delivery_seller`) và rule 4 (`late_delivery_logistics`) | Vai trò 4 | Task #3 (Vai trò 1) **đã xong** — giờ chỉ còn chờ task #4 (Vai trò 3) |
+| 7 | Implement + test rule 3 (`late_delivery_seller`) và rule 4 (`late_delivery_logistics`) | Vai trò 4 | ✅ Hết chặn — cả task #3 (Vai trò 1) và #4 (Vai trò 3) đã xong |
+
+**Vai trò 4 giờ không còn bị chặn bởi ai nữa — cả 6/6 rule đều làm được ngay bây giờ.**
 
 ### Tier 3 — chỉ chạy có ý nghĩa khi Vai trò 4 xong đủ 6 rule
 
@@ -93,12 +96,12 @@ Hạ tầng dùng chung (`schemas.py`, `data_access.py`, `evidence.py`, `tracing
 
 **File:** `src/agents/delivery_agent.py` · **Test:** `tests/test_delivery_agent.py`
 
-- [ ] Trong `investigate()`, implement đoạn so sánh `delivered_customer_date` với `estimated_date` để tính `late_to_customer` (pseudo-code có sẵn dạng comment — nhớ giữ `None` khi chưa giao, không suy diễn).
-- [ ] Thay `REPLACE_ME` trong `tests/test_delivery_agent.py` bằng order_id thật có `order_delivered_customer_date` rỗng.
-- [ ] Viết `test_delivered_on_time()` và `test_delivered_late()` (đã có gợi ý cuối file test).
-- [ ] Chạy `python -m pytest tests/test_delivery_agent.py -v`.
-- [ ] Báo Vai trò 4 khi `late_to_customer` hoạt động đúng — Policy Agent (rule 3/4/6) phụ thuộc field này.
-- [ ] Khi có kết quả 50 case thật: rà xem `order_status` có giá trị lạ nào ngoài `delivered/canceled/unavailable` không, báo sớm cho Vai trò 4.
+- [x] Trong `investigate()`, implement đoạn so sánh `delivered_customer_date` với `estimated_date` để tính `late_to_customer` — đã push thẳng lên `main`, đã review: đúng logic (giữ `None` khi chưa giao), không sửa/copy nhầm.
+- [x] Cập nhật `tests/test_delivery_agent.py` với order_id thật (không dùng `REPLACE_ME` nữa) — đã đối chiếu tay cả 3 fixture (`EC_001` trễ hạn, `EC_002` đúng hạn, `EC_003` chưa giao) với `orders.csv` gốc, khớp 100%.
+- [x] `test_delivered_on_time()` và `test_delivered_late()` đã viết, cả 2 pass.
+- [x] `python -m pytest tests/test_delivery_agent.py -v` — 5/5 pass. Full suite sau khi merge: 23 passed, 1 xfail.
+- [ ] **Còn lại — không phải chờ ai, chỉ cần báo:** báo Vai trò 4 là `late_to_customer` đã chạy đúng và merge vào `main` — rule 3/4/6 giờ không còn bị chặn bởi Vai trò 1 hay 3 nữa.
+- [ ] Khi có kết quả 50 case thật: rà xem `order_status` có giá trị lạ nào ngoài `delivered/canceled/unavailable` không, báo sớm cho Vai trò 4 (chưa thấy làm mục này).
 
 ## Vai trò 4 — Policy Agent (rule engine)
 
