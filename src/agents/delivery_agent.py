@@ -41,12 +41,8 @@ def investigate(order_id: str) -> DeliveryFacts:
     delivered = bool(pd.notna(delivered_customer_date))
 
     late_to_customer: bool | None = None
-    # TODO (Vai tro 3): neu da giao (delivered=True) VA estimated_date co gia tri, so sanh
-    # delivered_customer_date voi estimated_date -> late_to_customer = True/False.
-    # Neu chua giao (delivered=False), GIU NGUYEN None - khong suy dien "dung han" tu gia tri rong.
-    #
-    # if delivered and pd.notna(estimated_date):
-    #     late_to_customer = bool(delivered_customer_date > estimated_date)
+    if delivered and pd.notna(estimated_date):
+        late_to_customer = bool(delivered_customer_date > estimated_date)
 
     return DeliveryFacts(
         order_id=order_id,
