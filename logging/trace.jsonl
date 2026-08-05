@@ -1,0 +1,7 @@
+{"ts": "2026-08-05T03:13:18.218868+00:00", "case_id": "EC_001", "agent": "coordinator", "event": "case_started", "data": {"order_id": "e2a03ccf5ea816036608b2d8c3ab8e60"}}
+{"ts": "2026-08-05T03:14:50.790476+00:00", "case_id": "EC_001", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:e2a03ccf5ea816036608b2d8c3ab8e60", "item:e2a03ccf5ea816036608b2d8c3ab8e60:1"]}}
+{"ts": "2026-08-05T03:14:50.791304+00:00", "case_id": "EC_001", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:e2a03ccf5ea816036608b2d8c3ab8e60:1"]}}
+{"ts": "2026-08-05T03:14:50.792169+00:00", "case_id": "EC_001", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:e2a03ccf5ea816036608b2d8c3ab8e60"]}}
+{"ts": "2026-08-05T03:14:50.793502+00:00", "case_id": "EC_001", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T03:14:50.796131+00:00", "case_id": "EC_001", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T03:14:50.797347+00:00", "case_id": "EC_001", "agent": "coordinator", "event": "case_written", "data": {"path": "C:\\CODE\\MAIN\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_001.json"}}

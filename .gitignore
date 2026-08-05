@@ -1,0 +1,9 @@
+.env
+archive/
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+submission.zip
