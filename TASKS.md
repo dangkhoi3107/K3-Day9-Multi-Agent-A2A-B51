@@ -11,13 +11,15 @@
 
 ## Trạng thái hiện tại (đã build sẵn, đọc trước khi bắt đầu)
 
-Khung code đã chạy được thật (`pytest`: 17 passed / 1 xfail có chủ đích; `python scripts/run_pipeline.py EC_001` đã chạy thành công trên case thật, xem `output/EC_001.json` + `logging/trace.jsonl`). **Phần hạ tầng dưới đây đã xong, không cần đụng vào trừ khi có bug:**
+**Đã merge vào `main`** (octopus merge `son` + `TranTrung` + `Khoi`, sạch, không conflict — verify bằng `git merge-tree` trước khi merge và `pytest` sau khi merge): `pytest` → **21 passed, 1 xfail có chủ đích**. `python scripts/run_pipeline.py EC_001` / `EC_022` đã chạy thành công trên case thật.
 
-- `src/config.py`, `src/schemas.py`, `src/evidence.py`, `src/data_access.py`, `src/tracing.py`, `src/llm_client.py`
-- `src/agents/verifier_agent.py`, `src/agents/coordinator.py`
-- `scripts/run_pipeline.py`, `scripts/validate_output.py`, `scripts/package_submission.py`
+- **Hạ tầng (xong, không cần đụng vào trừ khi có bug):** `src/config.py`, `src/schemas.py`, `src/evidence.py`, `src/data_access.py`, `src/tracing.py`, `src/llm_client.py`, `src/agents/verifier_agent.py`, `scripts/run_pipeline.py`, `scripts/validate_output.py`, `scripts/package_submission.py`.
+- **`src/agents/coordinator.py`:** xong, kể cả 2 quyết định mở trước đó (`seller_ids` trong `affected_entities`, xử lý `verify_fail`) — Vai trò 5 (son) đã chốt, xem `architecture.md` mục 6.
+- **`src/agents/order_seller_agent.py`:** xong — Vai trò 1 (Khoi) đã implement `late_seller_ids` + test.
+- **`src/agents/payment_agent.py`:** logic xong từ đầu, test đã đủ — Vai trò 2 (TranTrung) đã verify + đề xuất dung sai rule 6 (đang chờ Vai trò 4 xác nhận).
+- **`logging/metadata.json`:** đã điền (Vai trò 5).
 
-**Phần còn TODO — đúng phần việc của 4 vai trò dưới đây:** mỗi hàm cần sửa đã có comment `# TODO (Vai trò N)` kèm công thức trích từ README ngay tại chỗ, và có sẵn pseudo-code bị comment-out để tham khảo.
+**Còn TODO thật sự — đúng phần việc của 2 vai trò dưới đây, chưa ai đụng vào:** `src/agents/delivery_agent.py` (Vai trò 3) và `src/agents/policy_agent.py` (Vai trò 4). Mỗi hàm cần sửa đã có comment `# TODO (Vai trò N)` kèm công thức trích từ README ngay tại chỗ, và có sẵn pseudo-code bị comment-out để tham khảo.
 
 ---
 
@@ -29,13 +31,13 @@ Hạ tầng dùng chung (`schemas.py`, `data_access.py`, `evidence.py`, `tracing
 
 ### Tier 0 — bắt đầu ngay, song song hoàn toàn, không chờ ai
 
-| # | Task | Ai | Vì sao không bị chặn |
+| # | Task | Ai | Trạng thái |
 | - | --- | -- | --- |
-| 1 | Implement + test rule 1 (`canceled_order_paid`) và rule 2 (`unavailable_order_paid`) trong `policy_agent.py` | Vai trò 4 | Chỉ cần `order_status` + `payment_total_brl` — cả 2 field này hạ tầng đã cung cấp sẵn, không nằm trong TODO của ai |
-| 2 | Implement + test rule 5 (`valid_split_payment`) | Vai trò 4 | Chỉ cần `is_split`/`is_reconciled` — Payment Agent (Vai trò 2) đã implement xong từ đầu |
-| 3 | Implement `late_seller_ids` trong `order_seller_agent.py` | Vai trò 1 | Độc lập hoàn toàn với Delivery Agent |
-| 4 | Implement `late_to_customer` trong `delivery_agent.py` | Vai trò 3 | Độc lập hoàn toàn với Order & Seller Agent |
-| 5 | Chốt dung sai rule 6 (giữ `0.10 BRL` hay đổi khác) | Vai trò 2 + Vai trò 4 | Chỉ cần trao đổi 2 phút — `config.py` đã có giá trị mặc định nên không ai bị chặn nếu chưa chốt kịp |
+| 1 | Implement + test rule 1 (`canceled_order_paid`) và rule 2 (`unavailable_order_paid`) trong `policy_agent.py` | Vai trò 4 | ⬜ Chưa làm — không chờ ai, làm được ngay |
+| 2 | Implement + test rule 5 (`valid_split_payment`) | Vai trò 4 | ⬜ Chưa làm — không chờ ai, làm được ngay |
+| 3 | Implement `late_seller_ids` trong `order_seller_agent.py` | Vai trò 1 | ✅ Xong (đã merge vào `main`) |
+| 4 | Implement `late_to_customer` trong `delivery_agent.py` | Vai trò 3 | ⬜ Chưa làm — không chờ ai, làm được ngay |
+| 5 | Chốt dung sai rule 6 (giữ `0.10 BRL` hay đổi khác) | Vai trò 2 + Vai trò 4 | 🟡 Vai trò 2 đã đề xuất `0.10 BRL` (xem `architecture.md` mục 6) — chờ Vai trò 4 xác nhận |
 
 **Vai trò 4 đừng ngồi chờ Vai trò 1/3 — bắt tay ngay với task #1 và #2, đó là 3/6 rule làm được luôn.**
 
@@ -45,11 +47,11 @@ Hạ tầng dùng chung (`schemas.py`, `data_access.py`, `evidence.py`, `tracing
 | - | --- | -- | --- |
 | 6 | Implement + test rule 6 (`unsupported_late_claim`) | Vai trò 4 | Chờ task #4 (Vai trò 3 xong `late_to_customer`) |
 
-### Tier 2 — chờ đủ 2 người xong
+### Tier 2 — chỉ còn chờ 1 người (task #3 đã xong)
 
 | # | Task | Ai | Chờ gì |
 | - | --- | -- | --- |
-| 7 | Implement + test rule 3 (`late_delivery_seller`) và rule 4 (`late_delivery_logistics`) | Vai trò 4 | Chờ CẢ task #3 (Vai trò 1) VÀ task #4 (Vai trò 3) |
+| 7 | Implement + test rule 3 (`late_delivery_seller`) và rule 4 (`late_delivery_logistics`) | Vai trò 4 | Task #3 (Vai trò 1) **đã xong** — giờ chỉ còn chờ task #4 (Vai trò 3) |
 
 ### Tier 3 — chỉ chạy có ý nghĩa khi Vai trò 4 xong đủ 6 rule
 
@@ -105,7 +107,7 @@ Hạ tầng dùng chung (`schemas.py`, `data_access.py`, `evidence.py`, `tracing
 Phần việc nặng nhất — phụ thuộc field từ Vai trò 1 (`late_seller_ids`) và Vai trò 3 (`late_to_customer`), nên có thể bắt đầu bằng facts giả (`tests/test_policy_agent.py` đã có sẵn helper `_order_seller()/_payment()/_delivery()` để tự dựng facts, không cần chờ 2 vai trò kia xong mới code được).
 
 - [ ] Implement lần lượt 6 hàm `_rule_1_canceled_order_paid` → `_rule_6_unsupported_late_claim` (mỗi hàm đã có docstring trích đúng điều kiện + cause_code + action từ README mục 4).
-- [ ] Chốt cùng Vai trò 2: dung sai rule 6.
+- [ ] Chốt cùng Vai trò 2: dung sai rule 6 — **Vai trò 2 đã đề xuất giữ `0.10 BRL`, ghi trong `architecture.md` mục 6, chỉ còn chờ bạn xác nhận (đồng ý hoặc đổi).**
 - [ ] Viết `test_rule2` .. `test_rule6` theo đúng mẫu `test_rule1_canceled_order_paid` (đã viết sẵn, đang bị đánh dấu `@pytest.mark.xfail` vì rule 1 chưa cài — **xóa dòng `@pytest.mark.xfail` đó khi bạn implement xong rule 1**, đó là tín hiệu để biết mình đã xong).
 - [ ] Viết `test_priority_canceled_beats_valid_split_payment()` (khung có sẵn cuối file, đang comment) — test quan trọng nhất vì kiểm tra đúng THỨ TỰ ưu tiên, không chỉ đúng từng rule riêng lẻ.
 - [ ] Chạy `python -m pytest tests/test_policy_agent.py -v` tới khi xanh hết (kể cả rule 1).
@@ -115,11 +117,11 @@ Phần việc nặng nhất — phụ thuộc field từ Vai trò 1 (`late_selle
 
 **File:** `src/agents/coordinator.py`, `scripts/*`, `logging/metadata.json`
 
-- [ ] Review + merge nhánh của 4 người còn lại vào `main`; chạy `pytest` sau mỗi lần merge.
-- [ ] Trong `coordinator.py::_process`, có 1 TODO về `seller_ids` trong `affected_entities` (đang mặc định = seller vi phạm) — xác nhận lại với Vai trò 1/4 xem có cần đổi theo từng rule không.
-- [ ] Quyết định TODO thứ hai trong `_process`: khi Verifier trả `verify_fail`, có nên tự động hạ `confidence` / gắn cờ thay vì chỉ log không.
-- [ ] Sau khi 4 vai trò xong: chạy `python scripts/run_pipeline.py` (full 50 case) → `python scripts/validate_output.py` → sửa lỗi tới khi sạch.
-- [ ] Điền `logging/metadata.json`: tên model thật đã dùng, param size, framework, runtime, `policy_version`.
+- [x] Review + merge nhánh của các người còn lại vào `main` (đã merge `son` + `TranTrung` + `Khoi`, octopus merge sạch, `pytest` 21 passed/1 xfail sau merge) — **còn nhánh Vai trò 3, 4 sẽ merge tiếp khi họ xong.**
+- [x] Trong `coordinator.py::_process`, TODO về `seller_ids` trong `affected_entities` — đã chốt = `late_seller_ids` (seller vi phạm), ghi rõ lý do trong `architecture.md` mục 6.
+- [x] Quyết định TODO thứ hai trong `_process`: `verify_fail` → hạ `confidence` xuống `0.1` (không tự sửa số liệu Policy Agent), vẫn ghi file. Đã implement (`VERIFY_FAIL_CONFIDENCE`).
+- [ ] Sau khi Vai trò 3 + 4 xong: chạy `python scripts/run_pipeline.py` (full 50 case) → `python scripts/validate_output.py` → sửa lỗi tới khi sạch.
+- [x] Điền `logging/metadata.json`: tên model thật đã dùng, param size, framework, runtime, `policy_version`.
 - [ ] Chạy `python scripts/package_submission.py`, kiểm tra `submission.zip` chỉ chứa `output/` (đúng README, không kèm source/.env).
 - [ ] Review 5 file `individual_[5 số cuối MSSV]_[Họ Tên].md` — mỗi người 1 file riêng, không dùng chung.
 - [ ] Rà lại `architecture.md` — bản nháp đã có, cập nhật phần nào lệch so với code thật (đặc biệt mục 6 "Quyết định kỹ thuật cần chốt").
