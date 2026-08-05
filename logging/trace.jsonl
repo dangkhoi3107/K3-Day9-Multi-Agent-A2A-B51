@@ -1,14 +1,350 @@
-{"ts": "2026-08-05T03:13:18.218868+00:00", "case_id": "EC_001", "agent": "coordinator", "event": "case_started", "data": {"order_id": "e2a03ccf5ea816036608b2d8c3ab8e60"}}
-{"ts": "2026-08-05T03:14:50.790476+00:00", "case_id": "EC_001", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:e2a03ccf5ea816036608b2d8c3ab8e60", "item:e2a03ccf5ea816036608b2d8c3ab8e60:1"]}}
-{"ts": "2026-08-05T03:14:50.791304+00:00", "case_id": "EC_001", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:e2a03ccf5ea816036608b2d8c3ab8e60:1"]}}
-{"ts": "2026-08-05T03:14:50.792169+00:00", "case_id": "EC_001", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:e2a03ccf5ea816036608b2d8c3ab8e60"]}}
-{"ts": "2026-08-05T03:14:50.793502+00:00", "case_id": "EC_001", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
-{"ts": "2026-08-05T03:14:50.796131+00:00", "case_id": "EC_001", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
-{"ts": "2026-08-05T03:14:50.797347+00:00", "case_id": "EC_001", "agent": "coordinator", "event": "case_written", "data": {"path": "C:\\CODE\\MAIN\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_001.json"}}
-{"ts": "2026-08-05T03:38:48.745959+00:00", "case_id": "EC_001", "agent": "coordinator", "event": "case_started", "data": {"order_id": "e2a03ccf5ea816036608b2d8c3ab8e60"}}
-{"ts": "2026-08-05T03:39:14.535323+00:00", "case_id": "EC_001", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:e2a03ccf5ea816036608b2d8c3ab8e60", "item:e2a03ccf5ea816036608b2d8c3ab8e60:1"]}}
-{"ts": "2026-08-05T03:39:14.535524+00:00", "case_id": "EC_001", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:e2a03ccf5ea816036608b2d8c3ab8e60:1"]}}
-{"ts": "2026-08-05T03:39:14.535627+00:00", "case_id": "EC_001", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:e2a03ccf5ea816036608b2d8c3ab8e60"]}}
-{"ts": "2026-08-05T03:39:14.535673+00:00", "case_id": "EC_001", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
-{"ts": "2026-08-05T03:39:14.536042+00:00", "case_id": "EC_001", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
-{"ts": "2026-08-05T03:39:14.536269+00:00", "case_id": "EC_001", "agent": "coordinator", "event": "case_written", "data": {"path": "/Users/doson/Documents/Vin-Lab/K3-Day9-Multi-Agent-A2A-B51/output/EC_001.json"}}
+{"ts": "2026-08-05T04:13:01.571573+00:00", "case_id": "EC_001", "agent": "coordinator", "event": "case_started", "data": {"order_id": "e2a03ccf5ea816036608b2d8c3ab8e60"}}
+{"ts": "2026-08-05T04:14:16.015462+00:00", "case_id": "EC_001", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:e2a03ccf5ea816036608b2d8c3ab8e60", "item:e2a03ccf5ea816036608b2d8c3ab8e60:1", "seller:f7496d659ca9fdaf323c0aae84176632"]}}
+{"ts": "2026-08-05T04:14:16.016069+00:00", "case_id": "EC_001", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:e2a03ccf5ea816036608b2d8c3ab8e60:1"]}}
+{"ts": "2026-08-05T04:14:16.016811+00:00", "case_id": "EC_001", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:e2a03ccf5ea816036608b2d8c3ab8e60"]}}
+{"ts": "2026-08-05T04:14:16.017131+00:00", "case_id": "EC_001", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_seller"}}
+{"ts": "2026-08-05T04:14:16.018389+00:00", "case_id": "EC_001", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.019029+00:00", "case_id": "EC_001", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_001.json"}}
+{"ts": "2026-08-05T04:14:16.020022+00:00", "case_id": "EC_002", "agent": "coordinator", "event": "case_started", "data": {"order_id": "8067c5e4834f3c0a3c8a4e921d65c5b1"}}
+{"ts": "2026-08-05T04:14:16.020722+00:00", "case_id": "EC_002", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:8067c5e4834f3c0a3c8a4e921d65c5b1", "item:8067c5e4834f3c0a3c8a4e921d65c5b1:1", "item:8067c5e4834f3c0a3c8a4e921d65c5b1:2"]}}
+{"ts": "2026-08-05T04:14:16.021002+00:00", "case_id": "EC_002", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:8067c5e4834f3c0a3c8a4e921d65c5b1:1"]}}
+{"ts": "2026-08-05T04:14:16.021479+00:00", "case_id": "EC_002", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:8067c5e4834f3c0a3c8a4e921d65c5b1"]}}
+{"ts": "2026-08-05T04:14:16.021708+00:00", "case_id": "EC_002", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T04:14:16.022285+00:00", "case_id": "EC_002", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.022911+00:00", "case_id": "EC_002", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_002.json"}}
+{"ts": "2026-08-05T04:14:16.023669+00:00", "case_id": "EC_003", "agent": "coordinator", "event": "case_started", "data": {"order_id": "71303d7e93b399f5bcd537d124c0bcfa"}}
+{"ts": "2026-08-05T04:14:16.024361+00:00", "case_id": "EC_003", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:71303d7e93b399f5bcd537d124c0bcfa", "item:71303d7e93b399f5bcd537d124c0bcfa:1"]}}
+{"ts": "2026-08-05T04:14:16.024652+00:00", "case_id": "EC_003", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:71303d7e93b399f5bcd537d124c0bcfa:1"]}}
+{"ts": "2026-08-05T04:14:16.025197+00:00", "case_id": "EC_003", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:71303d7e93b399f5bcd537d124c0bcfa"]}}
+{"ts": "2026-08-05T04:14:16.025460+00:00", "case_id": "EC_003", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "canceled_order_paid"}}
+{"ts": "2026-08-05T04:14:16.026087+00:00", "case_id": "EC_003", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.027664+00:00", "case_id": "EC_003", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_003.json"}}
+{"ts": "2026-08-05T04:14:16.028778+00:00", "case_id": "EC_004", "agent": "coordinator", "event": "case_started", "data": {"order_id": "fd28a6dfe413804d0b89b7c9abf5b1f3"}}
+{"ts": "2026-08-05T04:14:16.029507+00:00", "case_id": "EC_004", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:fd28a6dfe413804d0b89b7c9abf5b1f3", "item:fd28a6dfe413804d0b89b7c9abf5b1f3:1"]}}
+{"ts": "2026-08-05T04:14:16.029887+00:00", "case_id": "EC_004", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:fd28a6dfe413804d0b89b7c9abf5b1f3:1", "payment:fd28a6dfe413804d0b89b7c9abf5b1f3:2"]}}
+{"ts": "2026-08-05T04:14:16.030588+00:00", "case_id": "EC_004", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:fd28a6dfe413804d0b89b7c9abf5b1f3"]}}
+{"ts": "2026-08-05T04:14:16.030914+00:00", "case_id": "EC_004", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "valid_split_payment"}}
+{"ts": "2026-08-05T04:14:16.031775+00:00", "case_id": "EC_004", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.032604+00:00", "case_id": "EC_004", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_004.json"}}
+{"ts": "2026-08-05T04:14:16.033554+00:00", "case_id": "EC_005", "agent": "coordinator", "event": "case_started", "data": {"order_id": "9a31fd9d697e9670777501f720773fd9"}}
+{"ts": "2026-08-05T04:14:16.034392+00:00", "case_id": "EC_005", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:9a31fd9d697e9670777501f720773fd9"]}}
+{"ts": "2026-08-05T04:14:16.034763+00:00", "case_id": "EC_005", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:9a31fd9d697e9670777501f720773fd9:1"]}}
+{"ts": "2026-08-05T04:14:16.035367+00:00", "case_id": "EC_005", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:9a31fd9d697e9670777501f720773fd9"]}}
+{"ts": "2026-08-05T04:14:16.035655+00:00", "case_id": "EC_005", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unavailable_order_paid"}}
+{"ts": "2026-08-05T04:14:16.036326+00:00", "case_id": "EC_005", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.037149+00:00", "case_id": "EC_005", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_005.json"}}
+{"ts": "2026-08-05T04:14:16.037718+00:00", "case_id": "EC_006", "agent": "coordinator", "event": "case_started", "data": {"order_id": "fe51b7fac3bea42115fa1c3b8973cba7"}}
+{"ts": "2026-08-05T04:14:16.038556+00:00", "case_id": "EC_006", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:fe51b7fac3bea42115fa1c3b8973cba7", "item:fe51b7fac3bea42115fa1c3b8973cba7:1"]}}
+{"ts": "2026-08-05T04:14:16.039065+00:00", "case_id": "EC_006", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:fe51b7fac3bea42115fa1c3b8973cba7:1", "payment:fe51b7fac3bea42115fa1c3b8973cba7:2"]}}
+{"ts": "2026-08-05T04:14:16.039837+00:00", "case_id": "EC_006", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:fe51b7fac3bea42115fa1c3b8973cba7"]}}
+{"ts": "2026-08-05T04:14:16.040216+00:00", "case_id": "EC_006", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "valid_split_payment"}}
+{"ts": "2026-08-05T04:14:16.040910+00:00", "case_id": "EC_006", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.041660+00:00", "case_id": "EC_006", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_006.json"}}
+{"ts": "2026-08-05T04:14:16.042277+00:00", "case_id": "EC_007", "agent": "coordinator", "event": "case_started", "data": {"order_id": "ded456690bcb2ffd4def86541479037f"}}
+{"ts": "2026-08-05T04:14:16.043337+00:00", "case_id": "EC_007", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:ded456690bcb2ffd4def86541479037f", "item:ded456690bcb2ffd4def86541479037f:1"]}}
+{"ts": "2026-08-05T04:14:16.043813+00:00", "case_id": "EC_007", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:ded456690bcb2ffd4def86541479037f:1"]}}
+{"ts": "2026-08-05T04:14:16.044480+00:00", "case_id": "EC_007", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:ded456690bcb2ffd4def86541479037f"]}}
+{"ts": "2026-08-05T04:14:16.044838+00:00", "case_id": "EC_007", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "canceled_order_paid"}}
+{"ts": "2026-08-05T04:14:16.045626+00:00", "case_id": "EC_007", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.046408+00:00", "case_id": "EC_007", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_007.json"}}
+{"ts": "2026-08-05T04:14:16.046963+00:00", "case_id": "EC_008", "agent": "coordinator", "event": "case_started", "data": {"order_id": "2c0032906c603dcc21cd954828fa77d0"}}
+{"ts": "2026-08-05T04:14:16.047649+00:00", "case_id": "EC_008", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:2c0032906c603dcc21cd954828fa77d0", "item:2c0032906c603dcc21cd954828fa77d0:1", "seller:c1ed9e3daf6154542826a6996af0fb8c"]}}
+{"ts": "2026-08-05T04:14:16.047977+00:00", "case_id": "EC_008", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:2c0032906c603dcc21cd954828fa77d0:1"]}}
+{"ts": "2026-08-05T04:14:16.048567+00:00", "case_id": "EC_008", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:2c0032906c603dcc21cd954828fa77d0"]}}
+{"ts": "2026-08-05T04:14:16.048794+00:00", "case_id": "EC_008", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "canceled_order_paid"}}
+{"ts": "2026-08-05T04:14:16.049675+00:00", "case_id": "EC_008", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.050375+00:00", "case_id": "EC_008", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_008.json"}}
+{"ts": "2026-08-05T04:14:16.051241+00:00", "case_id": "EC_009", "agent": "coordinator", "event": "case_started", "data": {"order_id": "3aaee056441dcae251f360b1c71a7279"}}
+{"ts": "2026-08-05T04:14:16.052178+00:00", "case_id": "EC_009", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:3aaee056441dcae251f360b1c71a7279", "item:3aaee056441dcae251f360b1c71a7279:1"]}}
+{"ts": "2026-08-05T04:14:16.052998+00:00", "case_id": "EC_009", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:3aaee056441dcae251f360b1c71a7279:1"]}}
+{"ts": "2026-08-05T04:14:16.054484+00:00", "case_id": "EC_009", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:3aaee056441dcae251f360b1c71a7279"]}}
+{"ts": "2026-08-05T04:14:16.055264+00:00", "case_id": "EC_009", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_logistics"}}
+{"ts": "2026-08-05T04:14:16.056143+00:00", "case_id": "EC_009", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.057482+00:00", "case_id": "EC_009", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_009.json"}}
+{"ts": "2026-08-05T04:14:16.059693+00:00", "case_id": "EC_010", "agent": "coordinator", "event": "case_started", "data": {"order_id": "3a119f52de09d1b2700815732def8b47"}}
+{"ts": "2026-08-05T04:14:16.061571+00:00", "case_id": "EC_010", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:3a119f52de09d1b2700815732def8b47", "item:3a119f52de09d1b2700815732def8b47:1"]}}
+{"ts": "2026-08-05T04:14:16.062337+00:00", "case_id": "EC_010", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:3a119f52de09d1b2700815732def8b47:1"]}}
+{"ts": "2026-08-05T04:14:16.063198+00:00", "case_id": "EC_010", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:3a119f52de09d1b2700815732def8b47"]}}
+{"ts": "2026-08-05T04:14:16.063593+00:00", "case_id": "EC_010", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_logistics"}}
+{"ts": "2026-08-05T04:14:16.064508+00:00", "case_id": "EC_010", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.065577+00:00", "case_id": "EC_010", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_010.json"}}
+{"ts": "2026-08-05T04:14:16.066765+00:00", "case_id": "EC_011", "agent": "coordinator", "event": "case_started", "data": {"order_id": "2636a02ee7de9590df86a4c24b739c49"}}
+{"ts": "2026-08-05T04:14:16.067574+00:00", "case_id": "EC_011", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:2636a02ee7de9590df86a4c24b739c49"]}}
+{"ts": "2026-08-05T04:14:16.067959+00:00", "case_id": "EC_011", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:2636a02ee7de9590df86a4c24b739c49:1"]}}
+{"ts": "2026-08-05T04:14:16.068806+00:00", "case_id": "EC_011", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:2636a02ee7de9590df86a4c24b739c49"]}}
+{"ts": "2026-08-05T04:14:16.069131+00:00", "case_id": "EC_011", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unavailable_order_paid"}}
+{"ts": "2026-08-05T04:14:16.069898+00:00", "case_id": "EC_011", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.070736+00:00", "case_id": "EC_011", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_011.json"}}
+{"ts": "2026-08-05T04:14:16.071633+00:00", "case_id": "EC_012", "agent": "coordinator", "event": "case_started", "data": {"order_id": "103de323ece563a1012b4b6adf5a81b2"}}
+{"ts": "2026-08-05T04:14:16.072634+00:00", "case_id": "EC_012", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:103de323ece563a1012b4b6adf5a81b2", "item:103de323ece563a1012b4b6adf5a81b2:1"]}}
+{"ts": "2026-08-05T04:14:16.073257+00:00", "case_id": "EC_012", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:103de323ece563a1012b4b6adf5a81b2:1"]}}
+{"ts": "2026-08-05T04:14:16.074032+00:00", "case_id": "EC_012", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:103de323ece563a1012b4b6adf5a81b2"]}}
+{"ts": "2026-08-05T04:14:16.074420+00:00", "case_id": "EC_012", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_logistics"}}
+{"ts": "2026-08-05T04:14:16.075325+00:00", "case_id": "EC_012", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.076190+00:00", "case_id": "EC_012", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_012.json"}}
+{"ts": "2026-08-05T04:14:16.076849+00:00", "case_id": "EC_013", "agent": "coordinator", "event": "case_started", "data": {"order_id": "ee234bfd26ca588915483995d811c1d0"}}
+{"ts": "2026-08-05T04:14:16.077617+00:00", "case_id": "EC_013", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:ee234bfd26ca588915483995d811c1d0"]}}
+{"ts": "2026-08-05T04:14:16.077920+00:00", "case_id": "EC_013", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:ee234bfd26ca588915483995d811c1d0:1"]}}
+{"ts": "2026-08-05T04:14:16.078684+00:00", "case_id": "EC_013", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:ee234bfd26ca588915483995d811c1d0"]}}
+{"ts": "2026-08-05T04:14:16.079005+00:00", "case_id": "EC_013", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unavailable_order_paid"}}
+{"ts": "2026-08-05T04:14:16.079726+00:00", "case_id": "EC_013", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.080662+00:00", "case_id": "EC_013", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_013.json"}}
+{"ts": "2026-08-05T04:14:16.081561+00:00", "case_id": "EC_014", "agent": "coordinator", "event": "case_started", "data": {"order_id": "b93b079468bdf6a20fd54cf45d1e03b6"}}
+{"ts": "2026-08-05T04:14:16.082454+00:00", "case_id": "EC_014", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:b93b079468bdf6a20fd54cf45d1e03b6", "item:b93b079468bdf6a20fd54cf45d1e03b6:1"]}}
+{"ts": "2026-08-05T04:14:16.082853+00:00", "case_id": "EC_014", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:b93b079468bdf6a20fd54cf45d1e03b6:1", "payment:b93b079468bdf6a20fd54cf45d1e03b6:2"]}}
+{"ts": "2026-08-05T04:14:16.083461+00:00", "case_id": "EC_014", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:b93b079468bdf6a20fd54cf45d1e03b6"]}}
+{"ts": "2026-08-05T04:14:16.083888+00:00", "case_id": "EC_014", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "valid_split_payment"}}
+{"ts": "2026-08-05T04:14:16.084673+00:00", "case_id": "EC_014", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.085429+00:00", "case_id": "EC_014", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_014.json"}}
+{"ts": "2026-08-05T04:14:16.085973+00:00", "case_id": "EC_015", "agent": "coordinator", "event": "case_started", "data": {"order_id": "c504f1f5fd54cc8398d57dc0da49de01"}}
+{"ts": "2026-08-05T04:14:16.086696+00:00", "case_id": "EC_015", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:c504f1f5fd54cc8398d57dc0da49de01", "item:c504f1f5fd54cc8398d57dc0da49de01:1"]}}
+{"ts": "2026-08-05T04:14:16.087065+00:00", "case_id": "EC_015", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:c504f1f5fd54cc8398d57dc0da49de01:1"]}}
+{"ts": "2026-08-05T04:14:16.087674+00:00", "case_id": "EC_015", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:c504f1f5fd54cc8398d57dc0da49de01"]}}
+{"ts": "2026-08-05T04:14:16.087980+00:00", "case_id": "EC_015", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "canceled_order_paid"}}
+{"ts": "2026-08-05T04:14:16.088637+00:00", "case_id": "EC_015", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.089298+00:00", "case_id": "EC_015", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_015.json"}}
+{"ts": "2026-08-05T04:14:16.089902+00:00", "case_id": "EC_016", "agent": "coordinator", "event": "case_started", "data": {"order_id": "a88edef387e2a7e457695664bf0ddfc0"}}
+{"ts": "2026-08-05T04:14:16.090765+00:00", "case_id": "EC_016", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:a88edef387e2a7e457695664bf0ddfc0", "item:a88edef387e2a7e457695664bf0ddfc0:1"]}}
+{"ts": "2026-08-05T04:14:16.091202+00:00", "case_id": "EC_016", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:a88edef387e2a7e457695664bf0ddfc0:1"]}}
+{"ts": "2026-08-05T04:14:16.091861+00:00", "case_id": "EC_016", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:a88edef387e2a7e457695664bf0ddfc0"]}}
+{"ts": "2026-08-05T04:14:16.092134+00:00", "case_id": "EC_016", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_logistics"}}
+{"ts": "2026-08-05T04:14:16.092836+00:00", "case_id": "EC_016", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.093671+00:00", "case_id": "EC_016", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_016.json"}}
+{"ts": "2026-08-05T04:14:16.094780+00:00", "case_id": "EC_017", "agent": "coordinator", "event": "case_started", "data": {"order_id": "dd6ee4d96f0f3cf1432c3b82818e0387"}}
+{"ts": "2026-08-05T04:14:16.095646+00:00", "case_id": "EC_017", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:dd6ee4d96f0f3cf1432c3b82818e0387", "item:dd6ee4d96f0f3cf1432c3b82818e0387:1"]}}
+{"ts": "2026-08-05T04:14:16.096164+00:00", "case_id": "EC_017", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:dd6ee4d96f0f3cf1432c3b82818e0387:1"]}}
+{"ts": "2026-08-05T04:14:16.097683+00:00", "case_id": "EC_017", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:dd6ee4d96f0f3cf1432c3b82818e0387"]}}
+{"ts": "2026-08-05T04:14:16.098230+00:00", "case_id": "EC_017", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_logistics"}}
+{"ts": "2026-08-05T04:14:16.099644+00:00", "case_id": "EC_017", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.101112+00:00", "case_id": "EC_017", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_017.json"}}
+{"ts": "2026-08-05T04:14:16.102246+00:00", "case_id": "EC_018", "agent": "coordinator", "event": "case_started", "data": {"order_id": "97c8513f2504aa8ec05534307a703dea"}}
+{"ts": "2026-08-05T04:14:16.103738+00:00", "case_id": "EC_018", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:97c8513f2504aa8ec05534307a703dea", "item:97c8513f2504aa8ec05534307a703dea:1"]}}
+{"ts": "2026-08-05T04:14:16.104132+00:00", "case_id": "EC_018", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:97c8513f2504aa8ec05534307a703dea:1", "payment:97c8513f2504aa8ec05534307a703dea:2"]}}
+{"ts": "2026-08-05T04:14:16.104876+00:00", "case_id": "EC_018", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:97c8513f2504aa8ec05534307a703dea"]}}
+{"ts": "2026-08-05T04:14:16.105135+00:00", "case_id": "EC_018", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "valid_split_payment"}}
+{"ts": "2026-08-05T04:14:16.105825+00:00", "case_id": "EC_018", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.106585+00:00", "case_id": "EC_018", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_018.json"}}
+{"ts": "2026-08-05T04:14:16.107164+00:00", "case_id": "EC_019", "agent": "coordinator", "event": "case_started", "data": {"order_id": "31f935babbc97f5990e0ffd128e19541"}}
+{"ts": "2026-08-05T04:14:16.107908+00:00", "case_id": "EC_019", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:31f935babbc97f5990e0ffd128e19541"]}}
+{"ts": "2026-08-05T04:14:16.108326+00:00", "case_id": "EC_019", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:31f935babbc97f5990e0ffd128e19541:1"]}}
+{"ts": "2026-08-05T04:14:16.108918+00:00", "case_id": "EC_019", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:31f935babbc97f5990e0ffd128e19541"]}}
+{"ts": "2026-08-05T04:14:16.109223+00:00", "case_id": "EC_019", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unavailable_order_paid"}}
+{"ts": "2026-08-05T04:14:16.109890+00:00", "case_id": "EC_019", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.110656+00:00", "case_id": "EC_019", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_019.json"}}
+{"ts": "2026-08-05T04:14:16.111268+00:00", "case_id": "EC_020", "agent": "coordinator", "event": "case_started", "data": {"order_id": "96087ef44ca9abdbc4c372a3dd3c859f"}}
+{"ts": "2026-08-05T04:14:16.111948+00:00", "case_id": "EC_020", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:96087ef44ca9abdbc4c372a3dd3c859f", "item:96087ef44ca9abdbc4c372a3dd3c859f:1"]}}
+{"ts": "2026-08-05T04:14:16.112318+00:00", "case_id": "EC_020", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:96087ef44ca9abdbc4c372a3dd3c859f:1", "payment:96087ef44ca9abdbc4c372a3dd3c859f:2"]}}
+{"ts": "2026-08-05T04:14:16.112887+00:00", "case_id": "EC_020", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:96087ef44ca9abdbc4c372a3dd3c859f"]}}
+{"ts": "2026-08-05T04:14:16.113134+00:00", "case_id": "EC_020", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "valid_split_payment"}}
+{"ts": "2026-08-05T04:14:16.113800+00:00", "case_id": "EC_020", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.114614+00:00", "case_id": "EC_020", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_020.json"}}
+{"ts": "2026-08-05T04:14:16.115284+00:00", "case_id": "EC_021", "agent": "coordinator", "event": "case_started", "data": {"order_id": "13d341318c77969f10d77e1382957542"}}
+{"ts": "2026-08-05T04:14:16.116164+00:00", "case_id": "EC_021", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:13d341318c77969f10d77e1382957542", "item:13d341318c77969f10d77e1382957542:1"]}}
+{"ts": "2026-08-05T04:14:16.116543+00:00", "case_id": "EC_021", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:13d341318c77969f10d77e1382957542:1"]}}
+{"ts": "2026-08-05T04:14:16.117129+00:00", "case_id": "EC_021", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:13d341318c77969f10d77e1382957542"]}}
+{"ts": "2026-08-05T04:14:16.117446+00:00", "case_id": "EC_021", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "canceled_order_paid"}}
+{"ts": "2026-08-05T04:14:16.118133+00:00", "case_id": "EC_021", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.119868+00:00", "case_id": "EC_021", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_021.json"}}
+{"ts": "2026-08-05T04:14:16.120653+00:00", "case_id": "EC_022", "agent": "coordinator", "event": "case_started", "data": {"order_id": "1f7565efbb90c33b80f467d6a75332c5"}}
+{"ts": "2026-08-05T04:14:16.122065+00:00", "case_id": "EC_022", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:1f7565efbb90c33b80f467d6a75332c5", "item:1f7565efbb90c33b80f467d6a75332c5:1", "seller:02d35243ea2e497335cd0f076b45675d"]}}
+{"ts": "2026-08-05T04:14:16.122709+00:00", "case_id": "EC_022", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:1f7565efbb90c33b80f467d6a75332c5:1"]}}
+{"ts": "2026-08-05T04:14:16.123613+00:00", "case_id": "EC_022", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:1f7565efbb90c33b80f467d6a75332c5"]}}
+{"ts": "2026-08-05T04:14:16.124025+00:00", "case_id": "EC_022", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_seller"}}
+{"ts": "2026-08-05T04:14:16.125040+00:00", "case_id": "EC_022", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.125934+00:00", "case_id": "EC_022", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_022.json"}}
+{"ts": "2026-08-05T04:14:16.126602+00:00", "case_id": "EC_023", "agent": "coordinator", "event": "case_started", "data": {"order_id": "5fba7c57daf631028d2a584c52799e24"}}
+{"ts": "2026-08-05T04:14:16.127600+00:00", "case_id": "EC_023", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:5fba7c57daf631028d2a584c52799e24", "item:5fba7c57daf631028d2a584c52799e24:1"]}}
+{"ts": "2026-08-05T04:14:16.127983+00:00", "case_id": "EC_023", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:5fba7c57daf631028d2a584c52799e24:1"]}}
+{"ts": "2026-08-05T04:14:16.128864+00:00", "case_id": "EC_023", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:5fba7c57daf631028d2a584c52799e24"]}}
+{"ts": "2026-08-05T04:14:16.129230+00:00", "case_id": "EC_023", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T04:14:16.130077+00:00", "case_id": "EC_023", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.131063+00:00", "case_id": "EC_023", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_023.json"}}
+{"ts": "2026-08-05T04:14:16.131844+00:00", "case_id": "EC_024", "agent": "coordinator", "event": "case_started", "data": {"order_id": "d8716a985f69a46751cc046b0fea0d98"}}
+{"ts": "2026-08-05T04:14:16.132563+00:00", "case_id": "EC_024", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:d8716a985f69a46751cc046b0fea0d98"]}}
+{"ts": "2026-08-05T04:14:16.132887+00:00", "case_id": "EC_024", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:d8716a985f69a46751cc046b0fea0d98:1"]}}
+{"ts": "2026-08-05T04:14:16.133427+00:00", "case_id": "EC_024", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:d8716a985f69a46751cc046b0fea0d98"]}}
+{"ts": "2026-08-05T04:14:16.133734+00:00", "case_id": "EC_024", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unavailable_order_paid"}}
+{"ts": "2026-08-05T04:14:16.134397+00:00", "case_id": "EC_024", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.135345+00:00", "case_id": "EC_024", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_024.json"}}
+{"ts": "2026-08-05T04:14:16.136290+00:00", "case_id": "EC_025", "agent": "coordinator", "event": "case_started", "data": {"order_id": "e06ff711ddcab05c3651a9b1bb003950"}}
+{"ts": "2026-08-05T04:14:16.137111+00:00", "case_id": "EC_025", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:e06ff711ddcab05c3651a9b1bb003950", "item:e06ff711ddcab05c3651a9b1bb003950:1", "item:e06ff711ddcab05c3651a9b1bb003950:2", "item:e06ff711ddcab05c3651a9b1bb003950:3"]}}
+{"ts": "2026-08-05T04:14:16.137463+00:00", "case_id": "EC_025", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:e06ff711ddcab05c3651a9b1bb003950:1", "payment:e06ff711ddcab05c3651a9b1bb003950:2"]}}
+{"ts": "2026-08-05T04:14:16.138132+00:00", "case_id": "EC_025", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:e06ff711ddcab05c3651a9b1bb003950"]}}
+{"ts": "2026-08-05T04:14:16.138487+00:00", "case_id": "EC_025", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "valid_split_payment"}}
+{"ts": "2026-08-05T04:14:16.139211+00:00", "case_id": "EC_025", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.140009+00:00", "case_id": "EC_025", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_025.json"}}
+{"ts": "2026-08-05T04:14:16.141114+00:00", "case_id": "EC_026", "agent": "coordinator", "event": "case_started", "data": {"order_id": "966f96af9d189dc428ff04ebbca821b8"}}
+{"ts": "2026-08-05T04:14:16.142202+00:00", "case_id": "EC_026", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:966f96af9d189dc428ff04ebbca821b8", "item:966f96af9d189dc428ff04ebbca821b8:1"]}}
+{"ts": "2026-08-05T04:14:16.142713+00:00", "case_id": "EC_026", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:966f96af9d189dc428ff04ebbca821b8:1"]}}
+{"ts": "2026-08-05T04:14:16.143655+00:00", "case_id": "EC_026", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:966f96af9d189dc428ff04ebbca821b8"]}}
+{"ts": "2026-08-05T04:14:16.144094+00:00", "case_id": "EC_026", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "canceled_order_paid"}}
+{"ts": "2026-08-05T04:14:16.145035+00:00", "case_id": "EC_026", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.146042+00:00", "case_id": "EC_026", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_026.json"}}
+{"ts": "2026-08-05T04:14:16.147008+00:00", "case_id": "EC_027", "agent": "coordinator", "event": "case_started", "data": {"order_id": "2f346d92b11fcc7c342b3392b174cf3b"}}
+{"ts": "2026-08-05T04:14:16.147903+00:00", "case_id": "EC_027", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:2f346d92b11fcc7c342b3392b174cf3b"]}}
+{"ts": "2026-08-05T04:14:16.148294+00:00", "case_id": "EC_027", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:2f346d92b11fcc7c342b3392b174cf3b:1"]}}
+{"ts": "2026-08-05T04:14:16.149193+00:00", "case_id": "EC_027", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:2f346d92b11fcc7c342b3392b174cf3b"]}}
+{"ts": "2026-08-05T04:14:16.149617+00:00", "case_id": "EC_027", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unavailable_order_paid"}}
+{"ts": "2026-08-05T04:14:16.150409+00:00", "case_id": "EC_027", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.151156+00:00", "case_id": "EC_027", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_027.json"}}
+{"ts": "2026-08-05T04:14:16.151786+00:00", "case_id": "EC_028", "agent": "coordinator", "event": "case_started", "data": {"order_id": "80f0181edc2f4a5bd3384a3c39a83cee"}}
+{"ts": "2026-08-05T04:14:16.152596+00:00", "case_id": "EC_028", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:80f0181edc2f4a5bd3384a3c39a83cee"]}}
+{"ts": "2026-08-05T04:14:16.152927+00:00", "case_id": "EC_028", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:80f0181edc2f4a5bd3384a3c39a83cee:1"]}}
+{"ts": "2026-08-05T04:14:16.153488+00:00", "case_id": "EC_028", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:80f0181edc2f4a5bd3384a3c39a83cee"]}}
+{"ts": "2026-08-05T04:14:16.153781+00:00", "case_id": "EC_028", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unavailable_order_paid"}}
+{"ts": "2026-08-05T04:14:16.154388+00:00", "case_id": "EC_028", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.155130+00:00", "case_id": "EC_028", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_028.json"}}
+{"ts": "2026-08-05T04:14:16.155735+00:00", "case_id": "EC_029", "agent": "coordinator", "event": "case_started", "data": {"order_id": "5c932e0a181410b67c77daaed30991af"}}
+{"ts": "2026-08-05T04:14:16.156590+00:00", "case_id": "EC_029", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:5c932e0a181410b67c77daaed30991af", "item:5c932e0a181410b67c77daaed30991af:1", "item:5c932e0a181410b67c77daaed30991af:2", "item:5c932e0a181410b67c77daaed30991af:3", "seller:88460e8ebdecbfecb5f9601833981930"]}}
+{"ts": "2026-08-05T04:14:16.156975+00:00", "case_id": "EC_029", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:5c932e0a181410b67c77daaed30991af:1"]}}
+{"ts": "2026-08-05T04:14:16.157644+00:00", "case_id": "EC_029", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:5c932e0a181410b67c77daaed30991af"]}}
+{"ts": "2026-08-05T04:14:16.157993+00:00", "case_id": "EC_029", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_seller"}}
+{"ts": "2026-08-05T04:14:16.158895+00:00", "case_id": "EC_029", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.159766+00:00", "case_id": "EC_029", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_029.json"}}
+{"ts": "2026-08-05T04:14:16.160599+00:00", "case_id": "EC_030", "agent": "coordinator", "event": "case_started", "data": {"order_id": "405be8487a7fde1db0bc31ad6b08050a"}}
+{"ts": "2026-08-05T04:14:16.161538+00:00", "case_id": "EC_030", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:405be8487a7fde1db0bc31ad6b08050a", "item:405be8487a7fde1db0bc31ad6b08050a:1"]}}
+{"ts": "2026-08-05T04:14:16.162183+00:00", "case_id": "EC_030", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:405be8487a7fde1db0bc31ad6b08050a:1", "payment:405be8487a7fde1db0bc31ad6b08050a:2", "payment:405be8487a7fde1db0bc31ad6b08050a:3"]}}
+{"ts": "2026-08-05T04:14:16.162954+00:00", "case_id": "EC_030", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:405be8487a7fde1db0bc31ad6b08050a"]}}
+{"ts": "2026-08-05T04:14:16.163386+00:00", "case_id": "EC_030", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "valid_split_payment"}}
+{"ts": "2026-08-05T04:14:16.164254+00:00", "case_id": "EC_030", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.165494+00:00", "case_id": "EC_030", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_030.json"}}
+{"ts": "2026-08-05T04:14:16.166383+00:00", "case_id": "EC_031", "agent": "coordinator", "event": "case_started", "data": {"order_id": "4274ff4a5df607e75b32b80e2f8eda3f"}}
+{"ts": "2026-08-05T04:14:16.167252+00:00", "case_id": "EC_031", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:4274ff4a5df607e75b32b80e2f8eda3f", "item:4274ff4a5df607e75b32b80e2f8eda3f:1"]}}
+{"ts": "2026-08-05T04:14:16.167677+00:00", "case_id": "EC_031", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:4274ff4a5df607e75b32b80e2f8eda3f:1"]}}
+{"ts": "2026-08-05T04:14:16.168389+00:00", "case_id": "EC_031", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:4274ff4a5df607e75b32b80e2f8eda3f"]}}
+{"ts": "2026-08-05T04:14:16.168778+00:00", "case_id": "EC_031", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_logistics"}}
+{"ts": "2026-08-05T04:14:16.169699+00:00", "case_id": "EC_031", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.170802+00:00", "case_id": "EC_031", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_031.json"}}
+{"ts": "2026-08-05T04:14:16.172233+00:00", "case_id": "EC_032", "agent": "coordinator", "event": "case_started", "data": {"order_id": "c4dad201936ed30eef3c94fafa59ed6e"}}
+{"ts": "2026-08-05T04:14:16.173930+00:00", "case_id": "EC_032", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:c4dad201936ed30eef3c94fafa59ed6e", "item:c4dad201936ed30eef3c94fafa59ed6e:1", "item:c4dad201936ed30eef3c94fafa59ed6e:2"]}}
+{"ts": "2026-08-05T04:14:16.174732+00:00", "case_id": "EC_032", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:c4dad201936ed30eef3c94fafa59ed6e:1"]}}
+{"ts": "2026-08-05T04:14:16.175646+00:00", "case_id": "EC_032", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:c4dad201936ed30eef3c94fafa59ed6e"]}}
+{"ts": "2026-08-05T04:14:16.176168+00:00", "case_id": "EC_032", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T04:14:16.177291+00:00", "case_id": "EC_032", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.178391+00:00", "case_id": "EC_032", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_032.json"}}
+{"ts": "2026-08-05T04:14:16.179414+00:00", "case_id": "EC_033", "agent": "coordinator", "event": "case_started", "data": {"order_id": "a5c8f3a11dcb9bd9b0acdfb8101dfdc8"}}
+{"ts": "2026-08-05T04:14:16.180446+00:00", "case_id": "EC_033", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:a5c8f3a11dcb9bd9b0acdfb8101dfdc8", "item:a5c8f3a11dcb9bd9b0acdfb8101dfdc8:1", "seller:1025f0e2d44d7041d6cf58b6550e0bfa"]}}
+{"ts": "2026-08-05T04:14:16.180854+00:00", "case_id": "EC_033", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:a5c8f3a11dcb9bd9b0acdfb8101dfdc8:1"]}}
+{"ts": "2026-08-05T04:14:16.181791+00:00", "case_id": "EC_033", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:a5c8f3a11dcb9bd9b0acdfb8101dfdc8"]}}
+{"ts": "2026-08-05T04:14:16.182273+00:00", "case_id": "EC_033", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_seller"}}
+{"ts": "2026-08-05T04:14:16.183339+00:00", "case_id": "EC_033", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.184705+00:00", "case_id": "EC_033", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_033.json"}}
+{"ts": "2026-08-05T04:14:16.185582+00:00", "case_id": "EC_034", "agent": "coordinator", "event": "case_started", "data": {"order_id": "973acef56bf70feefa8264d4e9f300fc"}}
+{"ts": "2026-08-05T04:14:16.186488+00:00", "case_id": "EC_034", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:973acef56bf70feefa8264d4e9f300fc", "item:973acef56bf70feefa8264d4e9f300fc:1", "seller:66922902710d126a0e7d26b0e3805106"]}}
+{"ts": "2026-08-05T04:14:16.186886+00:00", "case_id": "EC_034", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:973acef56bf70feefa8264d4e9f300fc:1"]}}
+{"ts": "2026-08-05T04:14:16.187616+00:00", "case_id": "EC_034", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:973acef56bf70feefa8264d4e9f300fc"]}}
+{"ts": "2026-08-05T04:14:16.188062+00:00", "case_id": "EC_034", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_seller"}}
+{"ts": "2026-08-05T04:14:16.189138+00:00", "case_id": "EC_034", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.190812+00:00", "case_id": "EC_034", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_034.json"}}
+{"ts": "2026-08-05T04:14:16.192085+00:00", "case_id": "EC_035", "agent": "coordinator", "event": "case_started", "data": {"order_id": "2478ddd1d1395639b71cf0d498d8dbf6"}}
+{"ts": "2026-08-05T04:14:16.192967+00:00", "case_id": "EC_035", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:2478ddd1d1395639b71cf0d498d8dbf6", "item:2478ddd1d1395639b71cf0d498d8dbf6:1"]}}
+{"ts": "2026-08-05T04:14:16.193363+00:00", "case_id": "EC_035", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:2478ddd1d1395639b71cf0d498d8dbf6:1"]}}
+{"ts": "2026-08-05T04:14:16.194151+00:00", "case_id": "EC_035", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:2478ddd1d1395639b71cf0d498d8dbf6"]}}
+{"ts": "2026-08-05T04:14:16.194586+00:00", "case_id": "EC_035", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T04:14:16.195402+00:00", "case_id": "EC_035", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.196173+00:00", "case_id": "EC_035", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_035.json"}}
+{"ts": "2026-08-05T04:14:16.196776+00:00", "case_id": "EC_036", "agent": "coordinator", "event": "case_started", "data": {"order_id": "c609f82bcf7a90292a5940205ebd7e93"}}
+{"ts": "2026-08-05T04:14:16.197786+00:00", "case_id": "EC_036", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:c609f82bcf7a90292a5940205ebd7e93"]}}
+{"ts": "2026-08-05T04:14:16.198419+00:00", "case_id": "EC_036", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:c609f82bcf7a90292a5940205ebd7e93:1"]}}
+{"ts": "2026-08-05T04:14:16.199389+00:00", "case_id": "EC_036", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:c609f82bcf7a90292a5940205ebd7e93"]}}
+{"ts": "2026-08-05T04:14:16.199820+00:00", "case_id": "EC_036", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unavailable_order_paid"}}
+{"ts": "2026-08-05T04:14:16.200955+00:00", "case_id": "EC_036", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.201961+00:00", "case_id": "EC_036", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_036.json"}}
+{"ts": "2026-08-05T04:14:16.202796+00:00", "case_id": "EC_037", "agent": "coordinator", "event": "case_started", "data": {"order_id": "b90e46cdc30adec2f0fa041984341170"}}
+{"ts": "2026-08-05T04:14:16.203603+00:00", "case_id": "EC_037", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:b90e46cdc30adec2f0fa041984341170", "item:b90e46cdc30adec2f0fa041984341170:1", "seller:1ca7077d890b907f89be8c954a02686a"]}}
+{"ts": "2026-08-05T04:14:16.203947+00:00", "case_id": "EC_037", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:b90e46cdc30adec2f0fa041984341170:1"]}}
+{"ts": "2026-08-05T04:14:16.204589+00:00", "case_id": "EC_037", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:b90e46cdc30adec2f0fa041984341170"]}}
+{"ts": "2026-08-05T04:14:16.204988+00:00", "case_id": "EC_037", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_seller"}}
+{"ts": "2026-08-05T04:14:16.206696+00:00", "case_id": "EC_037", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.207950+00:00", "case_id": "EC_037", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_037.json"}}
+{"ts": "2026-08-05T04:14:16.208792+00:00", "case_id": "EC_038", "agent": "coordinator", "event": "case_started", "data": {"order_id": "6b27933c6a46e3d66203137ad1fdb678"}}
+{"ts": "2026-08-05T04:14:16.209675+00:00", "case_id": "EC_038", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:6b27933c6a46e3d66203137ad1fdb678", "item:6b27933c6a46e3d66203137ad1fdb678:1"]}}
+{"ts": "2026-08-05T04:14:16.210101+00:00", "case_id": "EC_038", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:6b27933c6a46e3d66203137ad1fdb678:1", "payment:6b27933c6a46e3d66203137ad1fdb678:2"]}}
+{"ts": "2026-08-05T04:14:16.211006+00:00", "case_id": "EC_038", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:6b27933c6a46e3d66203137ad1fdb678"]}}
+{"ts": "2026-08-05T04:14:16.211358+00:00", "case_id": "EC_038", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "valid_split_payment"}}
+{"ts": "2026-08-05T04:14:16.212699+00:00", "case_id": "EC_038", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.214118+00:00", "case_id": "EC_038", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_038.json"}}
+{"ts": "2026-08-05T04:14:16.215130+00:00", "case_id": "EC_039", "agent": "coordinator", "event": "case_started", "data": {"order_id": "44a03ff139461361ec4cce7949663c2f"}}
+{"ts": "2026-08-05T04:14:16.216039+00:00", "case_id": "EC_039", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:44a03ff139461361ec4cce7949663c2f", "item:44a03ff139461361ec4cce7949663c2f:1"]}}
+{"ts": "2026-08-05T04:14:16.216415+00:00", "case_id": "EC_039", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:44a03ff139461361ec4cce7949663c2f:1"]}}
+{"ts": "2026-08-05T04:14:16.217010+00:00", "case_id": "EC_039", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:44a03ff139461361ec4cce7949663c2f"]}}
+{"ts": "2026-08-05T04:14:16.217324+00:00", "case_id": "EC_039", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T04:14:16.218142+00:00", "case_id": "EC_039", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.219160+00:00", "case_id": "EC_039", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_039.json"}}
+{"ts": "2026-08-05T04:14:16.221000+00:00", "case_id": "EC_040", "agent": "coordinator", "event": "case_started", "data": {"order_id": "11bc240af3d9e1f77218715480a65b77"}}
+{"ts": "2026-08-05T04:14:16.222200+00:00", "case_id": "EC_040", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:11bc240af3d9e1f77218715480a65b77", "item:11bc240af3d9e1f77218715480a65b77:1"]}}
+{"ts": "2026-08-05T04:14:16.222652+00:00", "case_id": "EC_040", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:11bc240af3d9e1f77218715480a65b77:1"]}}
+{"ts": "2026-08-05T04:14:16.223357+00:00", "case_id": "EC_040", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:11bc240af3d9e1f77218715480a65b77"]}}
+{"ts": "2026-08-05T04:14:16.223670+00:00", "case_id": "EC_040", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T04:14:16.224355+00:00", "case_id": "EC_040", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.225151+00:00", "case_id": "EC_040", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_040.json"}}
+{"ts": "2026-08-05T04:14:16.226371+00:00", "case_id": "EC_041", "agent": "coordinator", "event": "case_started", "data": {"order_id": "64a8b3b4c19751b51d211deb32fdc67b"}}
+{"ts": "2026-08-05T04:14:16.227709+00:00", "case_id": "EC_041", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:64a8b3b4c19751b51d211deb32fdc67b", "item:64a8b3b4c19751b51d211deb32fdc67b:1"]}}
+{"ts": "2026-08-05T04:14:16.228290+00:00", "case_id": "EC_041", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:64a8b3b4c19751b51d211deb32fdc67b:1"]}}
+{"ts": "2026-08-05T04:14:16.229159+00:00", "case_id": "EC_041", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:64a8b3b4c19751b51d211deb32fdc67b"]}}
+{"ts": "2026-08-05T04:14:16.229519+00:00", "case_id": "EC_041", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "canceled_order_paid"}}
+{"ts": "2026-08-05T04:14:16.230283+00:00", "case_id": "EC_041", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.231131+00:00", "case_id": "EC_041", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_041.json"}}
+{"ts": "2026-08-05T04:14:16.231743+00:00", "case_id": "EC_042", "agent": "coordinator", "event": "case_started", "data": {"order_id": "8a5fc33c79bf3f4d9bbcc3dceb6b67c4"}}
+{"ts": "2026-08-05T04:14:16.232502+00:00", "case_id": "EC_042", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:8a5fc33c79bf3f4d9bbcc3dceb6b67c4", "item:8a5fc33c79bf3f4d9bbcc3dceb6b67c4:1"]}}
+{"ts": "2026-08-05T04:14:16.233575+00:00", "case_id": "EC_042", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:8a5fc33c79bf3f4d9bbcc3dceb6b67c4:1"]}}
+{"ts": "2026-08-05T04:14:16.234719+00:00", "case_id": "EC_042", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:8a5fc33c79bf3f4d9bbcc3dceb6b67c4"]}}
+{"ts": "2026-08-05T04:14:16.235236+00:00", "case_id": "EC_042", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T04:14:16.236163+00:00", "case_id": "EC_042", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.236966+00:00", "case_id": "EC_042", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_042.json"}}
+{"ts": "2026-08-05T04:14:16.237780+00:00", "case_id": "EC_043", "agent": "coordinator", "event": "case_started", "data": {"order_id": "3ef6bcdda6193f8657168ba7e8b3e948"}}
+{"ts": "2026-08-05T04:14:16.238811+00:00", "case_id": "EC_043", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:3ef6bcdda6193f8657168ba7e8b3e948", "item:3ef6bcdda6193f8657168ba7e8b3e948:1", "seller:46dc3b2cc0980fb8ec44634e21d2718e"]}}
+{"ts": "2026-08-05T04:14:16.239201+00:00", "case_id": "EC_043", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:3ef6bcdda6193f8657168ba7e8b3e948:1"]}}
+{"ts": "2026-08-05T04:14:16.240053+00:00", "case_id": "EC_043", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:3ef6bcdda6193f8657168ba7e8b3e948"]}}
+{"ts": "2026-08-05T04:14:16.240430+00:00", "case_id": "EC_043", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_seller"}}
+{"ts": "2026-08-05T04:14:16.241710+00:00", "case_id": "EC_043", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.242989+00:00", "case_id": "EC_043", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_043.json"}}
+{"ts": "2026-08-05T04:14:16.243942+00:00", "case_id": "EC_044", "agent": "coordinator", "event": "case_started", "data": {"order_id": "d671370d11048a2dab56335d3d91823e"}}
+{"ts": "2026-08-05T04:14:16.244819+00:00", "case_id": "EC_044", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:d671370d11048a2dab56335d3d91823e", "item:d671370d11048a2dab56335d3d91823e:1", "seller:4a3ca9315b744ce9f8e9374361493884"]}}
+{"ts": "2026-08-05T04:14:16.245149+00:00", "case_id": "EC_044", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:d671370d11048a2dab56335d3d91823e:1"]}}
+{"ts": "2026-08-05T04:14:16.245740+00:00", "case_id": "EC_044", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:d671370d11048a2dab56335d3d91823e"]}}
+{"ts": "2026-08-05T04:14:16.246019+00:00", "case_id": "EC_044", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_seller"}}
+{"ts": "2026-08-05T04:14:16.247583+00:00", "case_id": "EC_044", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.249191+00:00", "case_id": "EC_044", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_044.json"}}
+{"ts": "2026-08-05T04:14:16.250127+00:00", "case_id": "EC_045", "agent": "coordinator", "event": "case_started", "data": {"order_id": "d67b79fea59821fda4d363d337a56c3a"}}
+{"ts": "2026-08-05T04:14:16.251111+00:00", "case_id": "EC_045", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:d67b79fea59821fda4d363d337a56c3a", "item:d67b79fea59821fda4d363d337a56c3a:1"]}}
+{"ts": "2026-08-05T04:14:16.251452+00:00", "case_id": "EC_045", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:d67b79fea59821fda4d363d337a56c3a:1"]}}
+{"ts": "2026-08-05T04:14:16.252089+00:00", "case_id": "EC_045", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:d67b79fea59821fda4d363d337a56c3a"]}}
+{"ts": "2026-08-05T04:14:16.252426+00:00", "case_id": "EC_045", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "canceled_order_paid"}}
+{"ts": "2026-08-05T04:14:16.253289+00:00", "case_id": "EC_045", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.254342+00:00", "case_id": "EC_045", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_045.json"}}
+{"ts": "2026-08-05T04:14:16.255244+00:00", "case_id": "EC_046", "agent": "coordinator", "event": "case_started", "data": {"order_id": "2208f3a59d7067fe62c900692f5fdcaf"}}
+{"ts": "2026-08-05T04:14:16.256414+00:00", "case_id": "EC_046", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:2208f3a59d7067fe62c900692f5fdcaf", "item:2208f3a59d7067fe62c900692f5fdcaf:1"]}}
+{"ts": "2026-08-05T04:14:16.256984+00:00", "case_id": "EC_046", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:2208f3a59d7067fe62c900692f5fdcaf:1", "payment:2208f3a59d7067fe62c900692f5fdcaf:2"]}}
+{"ts": "2026-08-05T04:14:16.258160+00:00", "case_id": "EC_046", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:2208f3a59d7067fe62c900692f5fdcaf"]}}
+{"ts": "2026-08-05T04:14:16.258519+00:00", "case_id": "EC_046", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "valid_split_payment"}}
+{"ts": "2026-08-05T04:14:16.259194+00:00", "case_id": "EC_046", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.259925+00:00", "case_id": "EC_046", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_046.json"}}
+{"ts": "2026-08-05T04:14:16.260993+00:00", "case_id": "EC_047", "agent": "coordinator", "event": "case_started", "data": {"order_id": "b04477ada8d2ad7fa9d95358baaa785d"}}
+{"ts": "2026-08-05T04:14:16.262230+00:00", "case_id": "EC_047", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:b04477ada8d2ad7fa9d95358baaa785d", "item:b04477ada8d2ad7fa9d95358baaa785d:1"]}}
+{"ts": "2026-08-05T04:14:16.262804+00:00", "case_id": "EC_047", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:b04477ada8d2ad7fa9d95358baaa785d:1"]}}
+{"ts": "2026-08-05T04:14:16.263719+00:00", "case_id": "EC_047", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:b04477ada8d2ad7fa9d95358baaa785d"]}}
+{"ts": "2026-08-05T04:14:16.264084+00:00", "case_id": "EC_047", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T04:14:16.264798+00:00", "case_id": "EC_047", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.265534+00:00", "case_id": "EC_047", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_047.json"}}
+{"ts": "2026-08-05T04:14:16.266106+00:00", "case_id": "EC_048", "agent": "coordinator", "event": "case_started", "data": {"order_id": "adc253f1977c81c2c29dc7b9dd23d538"}}
+{"ts": "2026-08-05T04:14:16.266812+00:00", "case_id": "EC_048", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:adc253f1977c81c2c29dc7b9dd23d538", "item:adc253f1977c81c2c29dc7b9dd23d538:1"]}}
+{"ts": "2026-08-05T04:14:16.267119+00:00", "case_id": "EC_048", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:adc253f1977c81c2c29dc7b9dd23d538:1"]}}
+{"ts": "2026-08-05T04:14:16.267980+00:00", "case_id": "EC_048", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:adc253f1977c81c2c29dc7b9dd23d538"]}}
+{"ts": "2026-08-05T04:14:16.268731+00:00", "case_id": "EC_048", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "unsupported_late_claim"}}
+{"ts": "2026-08-05T04:14:16.269922+00:00", "case_id": "EC_048", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.270887+00:00", "case_id": "EC_048", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_048.json"}}
+{"ts": "2026-08-05T04:14:16.271535+00:00", "case_id": "EC_049", "agent": "coordinator", "event": "case_started", "data": {"order_id": "5b9e9502eca103a28ea22a94c65e3950"}}
+{"ts": "2026-08-05T04:14:16.272594+00:00", "case_id": "EC_049", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:5b9e9502eca103a28ea22a94c65e3950", "item:5b9e9502eca103a28ea22a94c65e3950:1"]}}
+{"ts": "2026-08-05T04:14:16.272982+00:00", "case_id": "EC_049", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:5b9e9502eca103a28ea22a94c65e3950:1"]}}
+{"ts": "2026-08-05T04:14:16.273639+00:00", "case_id": "EC_049", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:5b9e9502eca103a28ea22a94c65e3950"]}}
+{"ts": "2026-08-05T04:14:16.274033+00:00", "case_id": "EC_049", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_logistics"}}
+{"ts": "2026-08-05T04:14:16.275801+00:00", "case_id": "EC_049", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.277132+00:00", "case_id": "EC_049", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_049.json"}}
+{"ts": "2026-08-05T04:14:16.278330+00:00", "case_id": "EC_050", "agent": "coordinator", "event": "case_started", "data": {"order_id": "af0bbb47f125381ce9f3597dc70ef07b"}}
+{"ts": "2026-08-05T04:14:16.279067+00:00", "case_id": "EC_050", "agent": "order_seller_agent", "event": "facts", "data": {"evidence_ids": ["order:af0bbb47f125381ce9f3597dc70ef07b", "item:af0bbb47f125381ce9f3597dc70ef07b:1"]}}
+{"ts": "2026-08-05T04:14:16.279468+00:00", "case_id": "EC_050", "agent": "payment_agent", "event": "facts", "data": {"evidence_ids": ["payment:af0bbb47f125381ce9f3597dc70ef07b:1"]}}
+{"ts": "2026-08-05T04:14:16.280236+00:00", "case_id": "EC_050", "agent": "delivery_agent", "event": "facts", "data": {"evidence_ids": ["order:af0bbb47f125381ce9f3597dc70ef07b"]}}
+{"ts": "2026-08-05T04:14:16.280531+00:00", "case_id": "EC_050", "agent": "policy_agent", "event": "decision", "data": {"primary_issue": "late_delivery_logistics"}}
+{"ts": "2026-08-05T04:14:16.281426+00:00", "case_id": "EC_050", "agent": "verifier_agent", "event": "verify_pass", "data": {}}
+{"ts": "2026-08-05T04:14:16.282653+00:00", "case_id": "EC_050", "agent": "coordinator", "event": "case_written", "data": {"path": "D:\\LAB\\K3-Day9-Multi-Agent-A2A-B51\\output\\EC_050.json"}}

@@ -108,9 +108,9 @@ Evidence ID hợp lệ — đúng 5 dạng: `order:<order_id>`, `item:<order_id>
 
 ## 6. Quyết định kỹ thuật cần chốt (điền khi nhóm quyết định)
 
-- **Dung sai rule 6 (`unsupported_late_claim`):** README chỉ nêu rõ sai số 0.10 BRL ở rule 5. Role 2 đề xuất dùng lại `0.10 BRL` qua `UNSUPPORTED_CLAIM_TOLERANCE_BRL` để giữ cùng định nghĩa "payment khớp" giữa Payment Agent và Policy Agent. **Pending Role 4 confirmation** trước khi coi đây là quyết định cuối.
-- **Làm tròn tiền dùng chung:** **[ ]** `Decimal` + `ROUND_HALF_UP` hay cách khác — áp dụng nhất quán giữa Payment Agent và Policy Agent.
-- **Case không khớp rule nào (nếu phát sinh khi chạy 50 case thật):** **[ ]** fallback là gì, confidence bao nhiêu, có cần review tay không.
+- **Dung sai rule 6 (`unsupported_late_claim`):** README chỉ nêu rõ sai số 0.10 BRL ở rule 5. **Đã chốt (Role 2 + Role 4):** dùng lại `0.10 BRL` qua `UNSUPPORTED_CLAIM_TOLERANCE_BRL` để giữ cùng định nghĩa "payment khớp" giữa Payment Agent và Policy Agent.
+- **Làm tròn tiền dùng chung:** **Đã chốt:** `round(x, 2)` built-in của Python, áp dụng nhất quán ở `order_seller_agent.py`, `payment_agent.py` và `policy_agent.py` — không dùng `Decimal`.
+- **Case không khớp rule nào:** **Đã xác nhận thực tế:** chạy đủ 50/50 case thật, **không case nào rơi vào fallback** — mọi case đều khớp đúng 1 trong 6 rule (đã verify độc lập, không chỉ tin code). Nhánh fallback (confidence 0.1) vẫn giữ lại trong code phòng khi test với dữ liệu ngoài 50 case chính thức.
 - **Xử lý ngày rỗng (NaT):** Delivery/Policy Agent luôn kiểm `notna()` trước khi so sánh `order_delivered_customer_date`/`order_delivered_carrier_date` — không suy ra "đúng hạn" từ giá trị rỗng.
 - **`seller_ids` trong `affected_entities` (Vai trò 5, chốt với 1/4):** = `late_seller_ids` (seller vi phạm), **không** liệt kê mọi seller của đơn — vì đây là các bên bị quy trách nhiệm, giữ nhất quán với `responsible_parties`. Chỉ rule 3 (`late_delivery_seller`) làm field này non-empty; các rule khác → `[]`.
 - **Verifier trả `verify_fail` (Vai trò 5):** lỗi **schema** → raise → ghi `_fallback_output` (confidence 0). Lỗi **evidence/số tiền không nhất quán** (không phải schema) → **không** sửa số liệu Policy Agent, nhưng **hạ `confidence` xuống `0.1`** (`VERIFY_FAIL_CONFIDENCE` trong `coordinator.py`) để đánh dấu case cần review tay, và vẫn ghi file (đảm bảo đủ 50 — hard-gate). Trace ghi thêm bước `verify_fail_flagged`.

@@ -42,7 +42,6 @@ def _delivery(**overrides) -> DeliveryFacts:
     return DeliveryFacts(**base)
 
 
-@pytest.mark.xfail(reason="Vai tro 4 chua implement _rule_1_canceled_order_paid (TODO trong policy_agent.py)", strict=False)
 def test_rule1_canceled_order_paid():
     decision = decide(
         _order_seller(order_status="canceled"),
@@ -53,27 +52,89 @@ def test_rule1_canceled_order_paid():
     assert decision.cause_code == "ORDER_CANCELED_AFTER_PAYMENT"
     assert decision.recommended_refund_brl == 115.0
     assert decision.resolution_action == "issue_full_refund"
+    assert decision.responsible_party_type == "platform"
+    assert decision.responsible_party_id == "OLIST_PLATFORM"
+
+
+def test_rule2_unavailable_order_paid():
+    decision = decide(
+        _order_seller(order_status="unavailable"),
+        _payment(payment_total_brl=115.0),
+        _delivery(),
+    )
+    assert decision.primary_issue == "unavailable_order_paid"
+    assert decision.cause_code == "ORDER_UNAVAILABLE_AFTER_PAYMENT"
+    assert decision.recommended_refund_brl == 115.0
+    assert decision.resolution_action == "issue_full_refund"
+    assert decision.responsible_party_type == "platform"
+    assert decision.responsible_party_id == "OLIST_PLATFORM"
+
+
+def test_rule3_late_delivery_seller():
+    decision = decide(
+        _order_seller(late_seller_ids=["s1"], freight_total_brl=15.0),
+        _payment(),
+        _delivery(late_to_customer=True),
+    )
+    assert decision.primary_issue == "late_delivery_seller"
+    assert decision.cause_code == "SELLER_HANDOFF_AFTER_LIMIT"
+    assert decision.recommended_refund_brl == 15.0
+    assert decision.resolution_action == "refund_freight"
+    assert decision.responsible_party_type == "seller"
+    assert decision.responsible_party_id == "s1"
+
+
+def test_rule4_late_delivery_logistics():
+    decision = decide(
+        _order_seller(late_seller_ids=[], freight_total_brl=15.0),
+        _payment(),
+        _delivery(late_to_customer=True),
+    )
+    assert decision.primary_issue == "late_delivery_logistics"
+    assert decision.cause_code == "CARRIER_DELIVERED_AFTER_ESTIMATE"
+    assert decision.recommended_refund_brl == 15.0
+    assert decision.resolution_action == "refund_freight"
+    assert decision.responsible_party_type == "logistics_provider"
+    assert decision.responsible_party_id == "LOGISTICS_PROVIDER"
+
+
+def test_rule5_valid_split_payment():
+    decision = decide(
+        _order_seller(order_status="delivered"),
+        _payment(is_split=True, is_reconciled=True),
+        _delivery(late_to_customer=None),
+    )
+    assert decision.primary_issue == "valid_split_payment"
+    assert decision.cause_code == "MULTIPLE_PAYMENTS_RECONCILED"
+    assert decision.recommended_refund_brl == 0.0
+    assert decision.resolution_action == "explain_valid_split_payment"
+    assert decision.responsible_party_type is None
+
+
+def test_rule6_unsupported_late_claim():
+    decision = decide(
+        _order_seller(order_status="delivered"),
+        _payment(is_reconciled=True),
+        _delivery(late_to_customer=False),
+    )
+    assert decision.primary_issue == "unsupported_late_claim"
+    assert decision.cause_code == "DELIVERY_WITHIN_ESTIMATE"
+    assert decision.recommended_refund_brl == 0.0
+    assert decision.resolution_action == "reject_late_refund"
+    assert decision.responsible_party_type is None
+
+
+def test_priority_canceled_beats_valid_split_payment():
+    """Order vua canceled vua co 2 payment khop -> PHAI ra canceled_order_paid (rule 1 xet truoc rule 5)."""
+    decision = decide(
+        _order_seller(order_status="canceled"),
+        _payment(is_split=True, is_reconciled=True, payment_total_brl=115.0),
+        _delivery(),
+    )
+    assert decision.primary_issue == "canceled_order_paid"
 
 
 def test_no_matching_rule_falls_back_with_low_confidence():
-    # Cho toi khi cac rule con lai chua implement (con tra None het), decide() phai roi vao
-    # nhanh fallback trong policy_agent.py: confidence THAP, khong loi.
-    decision = decide(_order_seller(), _payment(), _delivery())
+    # Neu khong co rule nao khop (vi du payment khong reconciled)
+    decision = decide(_order_seller(), _payment(is_reconciled=False), _delivery(late_to_customer=None))
     assert 0.0 <= decision.confidence <= 1.0
-
-
-# TODO (Vai tro 4) - viet tiep theo mau test_rule1:
-# def test_rule2_unavailable_order_paid(): ...
-# def test_rule3_late_delivery_seller(): _order_seller(late_seller_ids=["s1"]), _delivery(late_to_customer=True)
-# def test_rule4_late_delivery_logistics(): _order_seller(late_seller_ids=[]), _delivery(late_to_customer=True)
-# def test_rule5_valid_split_payment(): _payment(is_split=True, is_reconciled=True)
-# def test_rule6_unsupported_late_claim(): _delivery(late_to_customer=False), _payment(is_reconciled=True)
-#
-# def test_priority_canceled_beats_valid_split_payment():
-#     """Order vua canceled vua co 2 payment khop -> PHAI ra canceled_order_paid (rule 1 xet truoc rule 5)."""
-#     decision = decide(
-#         _order_seller(order_status="canceled"),
-#         _payment(is_split=True, is_reconciled=True, payment_total_brl=115.0),
-#         _delivery(),
-#     )
-#     assert decision.primary_issue == "canceled_order_paid"

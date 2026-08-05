@@ -62,7 +62,18 @@ def _rule_1_canceled_order_paid(
 ) -> PolicyDecision | None:
     """order_status = canceled & tong payment > 0 -> platform/OLIST_PLATFORM, refund = tong
     payment, action = issue_full_refund, cause = ORDER_CANCELED_AFTER_PAYMENT."""
-    # TODO (Vai tro 4): if os_.order_status == "canceled" and pay.payment_total_brl > 0: ...
+    if os_.order_status == "canceled" and pay.payment_total_brl > 0:
+        return PolicyDecision(
+            primary_issue="canceled_order_paid",
+            case_status="action_required",
+            cause_code="ORDER_CANCELED_AFTER_PAYMENT",
+            responsible_party_type="platform",
+            responsible_party_id="OLIST_PLATFORM",
+            recommended_refund_brl=round(pay.payment_total_brl, 2),
+            resolution_action="issue_full_refund",
+            confidence=0.95,
+            evidence_ids=[evidence_policy("ORDER_CANCELED_AFTER_PAYMENT")],
+        )
     return None
 
 
@@ -71,7 +82,18 @@ def _rule_2_unavailable_order_paid(
 ) -> PolicyDecision | None:
     """order_status = unavailable & tong payment > 0 -> platform/OLIST_PLATFORM, refund = tong
     payment, action = issue_full_refund, cause = ORDER_UNAVAILABLE_AFTER_PAYMENT."""
-    # TODO (Vai tro 4)
+    if os_.order_status == "unavailable" and pay.payment_total_brl > 0:
+        return PolicyDecision(
+            primary_issue="unavailable_order_paid",
+            case_status="action_required",
+            cause_code="ORDER_UNAVAILABLE_AFTER_PAYMENT",
+            responsible_party_type="platform",
+            responsible_party_id="OLIST_PLATFORM",
+            recommended_refund_brl=round(pay.payment_total_brl, 2),
+            resolution_action="issue_full_refund",
+            confidence=0.95,
+            evidence_ids=[evidence_policy("ORDER_UNAVAILABLE_AFTER_PAYMENT")],
+        )
     return None
 
 
@@ -81,7 +103,18 @@ def _rule_3_late_delivery_seller(
     """giao sau estimated date (deliv.late_to_customer is True) & co seller ban giao muon
     (os_.late_seller_ids khong rong) -> seller/<seller_id>, refund = tong freight,
     action = refund_freight, cause = SELLER_HANDOFF_AFTER_LIMIT."""
-    # TODO (Vai tro 4)
+    if deliv.late_to_customer is True and len(os_.late_seller_ids) > 0:
+        return PolicyDecision(
+            primary_issue="late_delivery_seller",
+            case_status="action_required",
+            cause_code="SELLER_HANDOFF_AFTER_LIMIT",
+            responsible_party_type="seller",
+            responsible_party_id=os_.late_seller_ids[0],
+            recommended_refund_brl=round(os_.freight_total_brl, 2),
+            resolution_action="refund_freight",
+            confidence=0.95,
+            evidence_ids=[evidence_policy("SELLER_HANDOFF_AFTER_LIMIT")],
+        )
     return None
 
 
@@ -91,7 +124,18 @@ def _rule_4_late_delivery_logistics(
     """giao sau estimated date & KHONG co seller nao ban giao muon -> logistics_provider/
     LOGISTICS_PROVIDER, refund = tong freight, action = refund_freight,
     cause = CARRIER_DELIVERED_AFTER_ESTIMATE."""
-    # TODO (Vai tro 4)
+    if deliv.late_to_customer is True and len(os_.late_seller_ids) == 0:
+        return PolicyDecision(
+            primary_issue="late_delivery_logistics",
+            case_status="action_required",
+            cause_code="CARRIER_DELIVERED_AFTER_ESTIMATE",
+            responsible_party_type="logistics_provider",
+            responsible_party_id="LOGISTICS_PROVIDER",
+            recommended_refund_brl=round(os_.freight_total_brl, 2),
+            resolution_action="refund_freight",
+            confidence=0.95,
+            evidence_ids=[evidence_policy("CARRIER_DELIVERED_AFTER_ESTIMATE")],
+        )
     return None
 
 
@@ -100,7 +144,18 @@ def _rule_5_valid_split_payment(
 ) -> PolicyDecision | None:
     """pay.is_split & pay.is_reconciled -> khong ai chiu trach nhiem, refund = 0,
     action = explain_valid_split_payment, cause = MULTIPLE_PAYMENTS_RECONCILED."""
-    # TODO (Vai tro 4)
+    if pay.is_split is True and pay.is_reconciled is True:
+        return PolicyDecision(
+            primary_issue="valid_split_payment",
+            case_status="no_action",
+            cause_code="MULTIPLE_PAYMENTS_RECONCILED",
+            responsible_party_type=None,
+            responsible_party_id=None,
+            recommended_refund_brl=0.0,
+            resolution_action="explain_valid_split_payment",
+            confidence=0.95,
+            evidence_ids=[evidence_policy("MULTIPLE_PAYMENTS_RECONCILED")],
+        )
     return None
 
 
@@ -110,5 +165,16 @@ def _rule_6_unsupported_late_claim(
     """giao khong muon hon estimated date (deliv.late_to_customer is False) & payment khop
     (pay.is_reconciled) -> khong ai chiu trach nhiem, refund = 0, action = reject_late_refund,
     cause = DELIVERY_WITHIN_ESTIMATE."""
-    # TODO (Vai tro 4)
+    if deliv.late_to_customer is False and pay.is_reconciled is True:
+        return PolicyDecision(
+            primary_issue="unsupported_late_claim",
+            case_status="no_action",
+            cause_code="DELIVERY_WITHIN_ESTIMATE",
+            responsible_party_type=None,
+            responsible_party_id=None,
+            recommended_refund_brl=0.0,
+            resolution_action="reject_late_refund",
+            confidence=0.95,
+            evidence_ids=[evidence_policy("DELIVERY_WITHIN_ESTIMATE")],
+        )
     return None
