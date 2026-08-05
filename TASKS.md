@@ -35,11 +35,11 @@ Khung code đã chạy được thật (`pytest`: 17 passed / 1 xfail có chủ 
 
 **File:** `src/agents/payment_agent.py` · **Test:** `tests/test_payment_agent.py`
 
-- [ ] Công thức đối soát đã implement sẵn — đọc lại để xác nhận đúng ý, không cần viết mới.
-- [ ] Chốt cùng Vai trò 4: rule 6 (`unsupported_late_claim`) có dùng lại dung sai `0.10 BRL` không (biến `UNSUPPORTED_CLAIM_TOLERANCE_BRL` trong `src/config.py`) — ghi quyết định vào `architecture.md` mục 6.
-- [ ] Mở `tests/test_payment_agent.py`, viết 2 test còn để `# TODO` cuối file (2 payment khớp = valid split; 2 payment lệch = không hợp lệ) — tìm order_id thật bằng cách lọc `data/olist_order_payments_dataset.csv` theo số dòng/`order_id`.
-- [ ] Chạy `python -m pytest tests/test_payment_agent.py -v`.
-- [ ] Verify trên vài case thật: so `payment_total_brl` agent tính ra với tổng cột `payment_value` lọc tay trong CSV.
+- [x] Công thức đối soát đã implement sẵn — đọc lại để xác nhận đúng ý, không cần viết mới.
+- [ ] Chốt cùng Vai trò 4: rule 6 (`unsupported_late_claim`) có dùng lại dung sai `0.10 BRL` không (biến `UNSUPPORTED_CLAIM_TOLERANCE_BRL` trong `src/config.py`) — ghi quyết định vào `architecture.md` mục 6. **Role 2 note:** đã ghi đề xuất trong `architecture.md`, chờ Role 4 xác nhận.
+- [x] Mở `tests/test_payment_agent.py`, viết 2 test còn để `# TODO` cuối file (2 payment khớp = valid split; 2 payment lệch = không hợp lệ) — tìm order_id thật bằng cách lọc `data/olist_order_payments_dataset.csv` theo số dòng/`order_id`.
+- [x] Chạy `python -m pytest tests/test_payment_agent.py -v`.
+- [x] Verify trên vài case thật: so `payment_total_brl` agent tính ra với tổng cột `payment_value` lọc tay trong CSV.
 
 ## Vai trò 3 — Delivery Agent
 
